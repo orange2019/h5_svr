@@ -3,12 +3,12 @@ import Request from './../../api/common/request'
 
 class NewsStore {
 
-  async getList(state, route){
+  async getList(state, route) {
     let query = route.query;
 
-    query.offset = parseInt(route.query.offset) || 0
-    query.limit = parseInt(route.query.limit) || state.listLimit || 10
-    
+    query.offset = parseInt(route.query.offset || 0)
+    query.limit = parseInt(route.query.limit || 50)
+
     console.log("/api/news/list.query", query);
 
     let ret = await Request.get("/api/newsList", query)

@@ -5,9 +5,9 @@ import NewsStore from './news/index'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state(){
+  state() {
     return {
-      newsData : {
+      newsData: {
         id: "",
         title: "",
         description: "",
@@ -19,19 +19,25 @@ const store = new Vuex.Store({
         category: "",
         sort: 0
       },
-      listItems : [],
+      listItems: [],
       listCount: 0,
       listOffset: 0,
-      listCurrentNum:1,
-      listLimit: 10
+      listCurrentNum: 1,
+      listLimit: 10,
+      newsCategory: {
+        notice: true,
+        industry: false
+      }
     }
   },
   mutations: {
-    
+
   },
   actions: {
-    async newsListGet({state} , data){
-      return await NewsStore.getList(state , data.route)
+    async newsListGet({
+      state
+    }, data) {
+      return await NewsStore.getList(state, data.route)
     }
   }
 })
