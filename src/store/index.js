@@ -2,8 +2,19 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import NewsStore from './news/index'
 import InvestStore from './invest/index'
+import AssetsStore from './assets/index'
 
 Vue.use(Vuex)
+
+const userTransactionTypes = [
+  '',
+  '充值',
+  '提币',
+  '转账',
+  '购买产品',
+  '产品收益',
+  '团队收益'
+]
 
 const store = new Vuex.Store({
   state() {
@@ -34,7 +45,12 @@ const store = new Vuex.Store({
       userCanUseTokenNum: {},
       investUserList: [],
       investDetail: {},
-      investDetailSum: 0
+      investDetailSum: 0,
+      userAssets: {},
+      userTransactions: [],
+      userTransactionsCount: 0,
+      userTransactionTypes: userTransactionTypes,
+      userTransactionDetail: {}
     }
   },
   mutations: {
@@ -65,6 +81,16 @@ const store = new Vuex.Store({
       state
     }, data) {
       return await InvestStore.getUserDetail(state, data.route)
+    },
+    async userAssetsGet({
+      state
+    }, data) {
+      return await AssetsStore.getUserAsset(state, data.route)
+    },
+    async userTransactionGet({
+      state
+    }, data) {
+      return await AssetsStore.getTransaction(state, data.route)
     }
   }
 })

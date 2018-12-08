@@ -10,11 +10,12 @@ import Invest from './pages/invest/index.vue'
 import InvestList from './pages/invest/list.vue'
 import InvestDetail from './pages/invest/detail.vue'
 import InvestApply from './pages/invest/apply.vue'
-import Assest from './pages/assets/index.vue'
-import AssestTransaction from './pages/assets/transaction.vue'
+import Assets from './pages/assets/index.vue'
+import AssetsTransaction from './pages/assets/transaction.vue'
 import AssetsDetail from './pages/assets/detail.vue'
 import AssetsIn from './pages/assets/in.vue'
-import AssestOut from './pages/assets/out.vue'
+import AssetsOut from './pages/assets/out.vue'
+import AssetsTeam from './pages/assets/team.vue'
 
 let routes = [{
     path: '/',
@@ -47,11 +48,11 @@ let routes = [{
   },
   {
     path: '/assets',
-    component: Assest
+    component: Assets
   },
   {
     path: '/assets/transaction',
-    component: AssestTransaction
+    component: AssetsTransaction
   },
   {
     path: '/assets/detail',
@@ -63,7 +64,11 @@ let routes = [{
   },
   {
     path: '/assets/out',
-    component: AssestOut
+    component: AssetsOut
+  },
+  {
+    path: '/assets/team',
+    component: AssetsTeam
   }
 
 ]

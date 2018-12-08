@@ -24,28 +24,21 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-2" v-for="item in userTransactions">
       <div class="col-6 pt-2 pb-2">
-        <router-link :to="{path:'/assets/detail',query: {token:token}}" class="text-dark">购买产品</router-link>
+        <a
+          href="javascript:;"
+          @click="viewTransactionDetail(item)"
+          class="text-dark"
+        >{{ userTransactionTypes[item.type] || ''}}</a>
       </div>
       <div class="col-6 pt-2 pb-2 text-right">
-        <router-link :to="{path:'/assets/detail',query: {token:token}}" class="text-dark">
-          <strong>100000.00</strong>
-        </router-link>
+        <a href="javascript:;" class="text-dark" @click="viewTransactionDetail(item)">
+          <strong>{{ item.num }}</strong>
+        </a>
       </div>
       <div class="col-12">
-        <small class="text-muted">2018-10-12 17:00</small>
-        <hr>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 pt-2 pb-2">购买产品</div>
-      <div class="col-6 pt-2 pb-2 text-right">
-        <strong>100000.00</strong>
-      </div>
-      <div class="col-12">
-        <small class="text-muted">2018-10-12 17:00</small>
+        <small class="text-muted">{{ formatTime(item.create_time)}}</small>
         <hr>
       </div>
     </div>
@@ -53,10 +46,30 @@
 </template>
 
 <script>
+import Moment from "moment";
 export default {
+  asyncData({ store, route }) {
+    store.dispatch("userTransactionGet", { route: route });
+  },
   computed: {
     token() {
       return this.$route.query.token;
+    },
+    userTransactions() {
+      return this.$store.state.userTransactions;
+    },
+    userTransactionTypes() {
+      return this.$store.state.userTransactionTypes;
+    }
+  },
+  methods: {
+    formatTime(timestamp, format = "YYYY-MM-DD HH:mm") {
+      let date = new Date(timestamp * 1000);
+      return Moment(date).format(format);
+    },
+    viewTransactionDetail(item) {
+      this.$store.state.userTransactionDetail = item;
+      this.$router.push("/assets/detail");
     }
   }
 };
