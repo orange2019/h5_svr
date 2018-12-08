@@ -7,7 +7,7 @@
     <div class="invest-detail-title row bg-white m-3 mt-5 pt-3 pb-3 rounded shadow-sm text-center">
       <div class="col-12 text-center">
         <span class="text-muted">总资产</span>
-        <div class="h4 text-primary mt-2">{{ userAssets.token_balance }}</div>
+        <div class="h4 text-primary mt-2">{{ userAssets.token_balance || 0 }}</div>
       </div>
       <div class="col-12 h1 text-primary">
         <hr>
@@ -16,19 +16,19 @@
       <div class="col-4 border-right">
         <span class="text-muted">投资收益</span>
         <div class="text-truncate mt-2">
-          <span class="h6">{{ userAssets.invest }}</span>
+          <span class="h6">{{ userAssets.invest || 0 }}</span>
         </div>
       </div>
       <div class="col-4 border-right">
         <span class="text-muted">团队资产</span>
         <div class="text-truncate mt-2">
-          <span class="h6">{{ userAssets.invest_child }}</span>
+          <span class="h6">{{ userAssets.invest_child || 0}}</span>
         </div>
       </div>
       <div class="col-4">
         <span class="text-muted">可用资产</span>
         <div class="text-truncate mt-2">
-          <span class="h6">{{ canUseNum }}</span>
+          <span class="h6">{{ canUseNum || 0}}</span>
         </div>
       </div>
     </div>
