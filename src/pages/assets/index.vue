@@ -102,9 +102,7 @@
 <script>
 import Moment from "moment";
 export default {
-  asyncData({ store, route }) {
-    store.dispatch("investDetailGet", { route: route }).then(() => {});
-  },
+  asyncData({ store, route }) {},
   computed: {
     token() {
       return this.$route.query.token;
