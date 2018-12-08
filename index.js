@@ -8,7 +8,9 @@ const path = require("path");
 const webpack = require("webpack");
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const webpackHotMiddleware = require("webpack-hot-middleware");
-const { createBundleRenderer } = require("vue-server-renderer");
+const {
+  createBundleRenderer
+} = require("vue-server-renderer");
 const config = require("./config");
 
 const SSR = false;
@@ -25,15 +27,23 @@ app.use(
   session({
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false },
+    cookie: {
+      secure: false
+    },
     secret: "123456" // session加密
   })
 );
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
-app.use(bodyParser.raw({ type: "application/xml" }));
-app.use(bodyParser.text({ type: "text/xml" }));
+app.use(bodyParser.raw({
+  type: "application/xml"
+}));
+app.use(bodyParser.text({
+  type: "text/xml"
+}));
 
 // allow overriding methods in query (?_method=put)
 app.use(methodOverride("_method"));
@@ -73,7 +83,7 @@ app.use("/api", async (req, res) => {
     query: req.query,
     session: req.session
   };
-  let cryptStr = crypt.hmacMd5(JSON.stringify(content), reqUuid);
+  let cryptStr = crypt.hmacMd5(content, reqUuid);
 
   let sign = crypt.sign(cryptStr, config.primary_key);
   let postData = {
@@ -200,6 +210,6 @@ if (nodeEnv == "dev") {
 
 const PROT = process.env.port || 4003;
 
-app.listen(PROT, function() {
+app.listen(PROT, function () {
   console.log(`Vue express ssr server: app listening on port ${PROT}!\n`);
 });

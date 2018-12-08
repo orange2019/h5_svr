@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import NewsStore from './news/index'
+import InvestStore from './invest/index'
 
 Vue.use(Vuex)
 
@@ -27,7 +28,13 @@ const store = new Vuex.Store({
       newsCategory: {
         notice: true,
         industry: false
-      }
+      },
+      investList: [],
+      investInfo: {},
+      userCanUseTokenNum: {},
+      investUserList: [],
+      investDetail: {},
+      investDetailSum: 0
     }
   },
   mutations: {
@@ -38,6 +45,26 @@ const store = new Vuex.Store({
       state
     }, data) {
       return await NewsStore.getList(state, data.route)
+    },
+    async investListGet({
+      state
+    }, data) {
+      return await InvestStore.getList(state, data.route)
+    },
+    async investInfoGet({
+      state
+    }, data) {
+      return await InvestStore.getInfo(state, data.route)
+    },
+    async investUserListGet({
+      state
+    }, data) {
+      return await InvestStore.getUserList(state, data.route)
+    },
+    async investDetailGet({
+      state
+    }, data) {
+      return await InvestStore.getUserDetail(state, data.route)
     }
   }
 })

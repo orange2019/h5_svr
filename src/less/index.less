@@ -1,3 +1,5 @@
+@import "./alert-box.less";
+
 * {
   padding: 0;
   margin: 0;
@@ -7,7 +9,7 @@ html,
 body {
   width: 100%;
   height: 100%;
-  background: #eeeeee;
+  background: #f0f0f0;
 }
 
 .row {
@@ -18,19 +20,13 @@ body {
   max-width: 750px;
   margin: auto;
   width: 100%;
+  height: 100%;
   // padding: 0 1rem;
 }
 
 .page-top {
   height: 48px;
   line-height: 48px;
-  background: -webkit-linear-gradient(left, #5d83ff, #1774df, #3c56ed, #0d1bda);
-
-  background: -o-linear-gradient(left, #5d83ff, #1774df, #3c56ed, #0d1bda);
-
-  background: -moz-linear-gradient(left, #5d83ff, #1774df, #3c56ed, #0d1bda);
-
-  background: -ms-linear-gradient(left, #5d83ff, #1774df, #3c56ed, #0d1bda);
   color: #fff;
 }
 
@@ -74,4 +70,44 @@ body {
   img {
     max-width: 100% !important;
   }
+}
+
+.page-invest-list {
+  .invest-item-rate {
+    font-size: 1.5rem;
+    line-height: 1rem;
+    color: #d35400;
+  }
+  .invest-item-rate.big {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  .btn-invest-action {
+    text-align: center;
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    line-height: 48px;
+    background: #007bff;
+    border-radius: 24px;
+  }
+}
+
+.invest-detail-title {
+  position: relative;
+  z-index: 1;
+}
+
+.invest-detail-info {
+  position: relative;
+  top: -6rem;
+  background: #fff;
+  height: 100%;
+  padding-top: 6.5rem;
+}
+
+.btn-radius-big {
+  border-radius: 24px;
 }

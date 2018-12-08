@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="page-top page-new-list-top row">
+    <div class="page-top page-new-list-top row bg-primary">
       <div class="text-center col-12">资讯列表</div>
     </div>
     <div class="page-sub-nav row">
