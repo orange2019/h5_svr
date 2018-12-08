@@ -50,7 +50,10 @@ const store = new Vuex.Store({
       userTransactions: [],
       userTransactionsCount: 0,
       userTransactionTypes: userTransactionTypes,
-      userTransactionDetail: {}
+      userTransactionDetail: {},
+      userInvestChild: [],
+      userInvestChildCount: 0,
+      userTeamCount: 0
     }
   },
   mutations: {
@@ -91,7 +94,12 @@ const store = new Vuex.Store({
       state
     }, data) {
       return await AssetsStore.getTransaction(state, data.route)
-    }
+    },
+    async userInvestChildGet({
+      state
+    }, data) {
+      return await AssetsStore.getChildInvest(state, data.route)
+    },
   }
 })
 
