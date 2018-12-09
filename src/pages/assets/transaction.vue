@@ -45,7 +45,7 @@
       </div>
     </template>
     <template v-else>
-      <div class="mt-5 text-center">无数据</div>
+      <div class="mt-5 text-center text-muted">无数据</div>
     </template>
   </div>
 </template>
