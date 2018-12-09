@@ -26,6 +26,7 @@ class Request {
     // console.log(res)
     if (res.status == 200) {
       let ret = res.body
+      console.log(ret)
       if (ret.code == -100 || ret.code == -101) {
         location.href = '/auth/err?code=' + ret.code
       }

@@ -47,6 +47,7 @@ export default {
     return {};
   },
   asyncData({ store, route }) {
+    route.query.category = route.query.category || "NOTICE";
     store.dispatch("newsListGet", {
       route: route
     });

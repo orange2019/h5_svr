@@ -16,6 +16,7 @@ import AssetsDetail from './pages/assets/detail.vue'
 import AssetsIn from './pages/assets/in.vue'
 import AssetsOut from './pages/assets/out.vue'
 import AssetsTeam from './pages/assets/team.vue'
+import AuthError from './pages/auth/error.vue'
 
 let routes = [{
     path: '/',
@@ -69,8 +70,11 @@ let routes = [{
   {
     path: '/assets/team',
     component: AssetsTeam
-  }
-
+  },
+  {
+    path: '/auth/err',
+    component: AuthError
+  },
 ]
 
 export function createRouter() {
