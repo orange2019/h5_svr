@@ -1,8 +1,8 @@
 <template>
   <div class="page bg-white">
     <div class="page-top row bg-primary">
-      <div class="col-2">
-        <a href="javascript:history.go(-1);">
+      <div class="col-2 pl-0">
+        <a href="javascript:history.go(-1);" class="pl-3 d-block">
           <span class="fas fa-chevron-left text-white"></span>
         </a>
       </div>
