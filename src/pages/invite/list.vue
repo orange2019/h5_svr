@@ -1,0 +1,55 @@
+<template>
+  <div class="page bg-white">
+    <div class="page-top page-new-list-top row bg-primary">
+      <div class="col-2 pl-0">
+        <a href="javascript:app.close()" class="pl-3 d-block">
+          <span class="fas fa-chevron-left text-white"></span>
+        </a>
+      </div>
+      <div class="text-center col-8">好友列表</div>
+    </div>
+    <div class="row">
+      <div class="col-12 pt-2 pb-2 text-center text-muted">
+        共邀请好友
+        <strong class="text-primary">{{ inviteCount }}</strong> 人
+      </div>
+      <div class="col-12 bg-light pt-2"></div>
+    </div>
+
+    <template v-if="inviteList && inviteList.length">
+      <div class="row pt-3" v-for="item in inviteList">
+        <div class="col-6">{{ item.user_info ? item.user_info.realname : '无名'}}</div>
+        <div class="col-6 text-muted text-right">{{ formatTime(item.create_time) }}</div>
+        <div class="col-12">
+          <hr>
+        </div>
+      </div>
+    </template>
+    <template v-else>
+      <div class="text-center text-muted mt-5">无数据</div>
+    </template>
+  </div>
+</template>
+
+<script>
+import Moment from "moment";
+export default {
+  asyncData({ store, route }) {
+    store.dispatch("inviteListGet", { route: route });
+  },
+  computed: {
+    inviteList() {
+      return this.$store.state.inviteList;
+    },
+    inviteCount() {
+      return this.$store.state.inviteCount;
+    }
+  },
+  methods: {
+    formatTime(timestamp, format = "YYYY-MM-DD HH:mm") {
+      let date = new Date(timestamp * 1000);
+      return Moment(date).format(format);
+    }
+  }
+};
+</script>

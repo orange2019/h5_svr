@@ -18,6 +18,9 @@ import AssetsIn from './pages/assets/in.vue'
 import AssetsOut from './pages/assets/out.vue'
 import AssetsTeam from './pages/assets/team.vue'
 import AuthError from './pages/auth/error.vue'
+import Invite from './pages/invite/index.vue'
+import InviteList from './pages/invite/list.vue'
+import InviteDownload from './pages/invite/download.vue'
 
 let routes = [{
     path: '/',
@@ -80,6 +83,18 @@ let routes = [{
     path: '/auth/err',
     component: AuthError
   },
+  {
+    path: '/invite',
+    component: Invite
+  },
+  {
+    path: '/invite/download',
+    component: InviteDownload
+  },
+  {
+    path: '/invite/list',
+    component: InviteList
+  }
 
 
 ]

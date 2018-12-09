@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import NewsStore from './news/index'
 import InvestStore from './invest/index'
 import AssetsStore from './assets/index'
+import InviteStore from './invite/index'
 
 Vue.use(Vuex)
 
@@ -46,6 +47,8 @@ const store = new Vuex.Store({
       investUserList: [],
       investDetail: {},
       investDetailSum: 0,
+      investDetailTotal: 0,
+      investDetailTotalLeave: 0,
       userAssets: {},
       userTransactions: [],
       userTransactionsCount: 0,
@@ -53,7 +56,10 @@ const store = new Vuex.Store({
       userTransactionDetail: {},
       userInvestChild: [],
       userInvestChildCount: 0,
-      userTeamCount: 0
+      userTeamCount: 0,
+      inviteList: [],
+      inviteCount: 0,
+      inviteInfo: {}
     }
   },
   mutations: {
@@ -100,6 +106,16 @@ const store = new Vuex.Store({
     }, data) {
       return await AssetsStore.getChildInvest(state, data.route)
     },
+    async inviteListGet({
+      state
+    }, data) {
+      return await InviteStore.getList(state, data.route)
+    },
+    async inviteInfoGet({
+      state
+    }, data) {
+      return await InviteStore.getInfo(state, data.route)
+    }
   }
 })
 
