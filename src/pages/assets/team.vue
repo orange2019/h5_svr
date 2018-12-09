@@ -19,7 +19,7 @@
     </div>
     <div class="bg-light pt-1"></div>
 
-    <template v-if="userInvestChild.length">
+    <template v-if="userInvestChild && userInvestChild.length">
       <div class="row mt-3" v-for="item in userInvestChild">
         <div class="col-6">
           <div class>{{ item.user_info ? item.user_info.realname: '无名' }}</div>

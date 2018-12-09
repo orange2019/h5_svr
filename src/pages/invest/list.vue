@@ -12,32 +12,39 @@
     </div>
 
     <div class="page-invest-list">
-      <div class="row mt-3 bg-white pt-3 pb-3" v-for="item in investUserList">
-        <div class="col-6">{{ item.invest.name }}</div>
-        <div class="col-6 text-right">每日等比收益</div>
-        <div class="col-12">
-          <hr>
-        </div>
-        <div class="col-4 text-left border-right">
-          <div class>
-            <span class="text-orange invest-item-rate big">{{item.rate}}</span>
-            <small class="text-muted">%</small>
+      <template v-if="investUserList && investUserList.length">
+        <div class="row mt-3 bg-white pt-3 pb-3" v-for="item in investUserList">
+          <div class="col-6">{{ item.invest.name }}</div>
+          <div class="col-6 text-right">每日等比收益</div>
+          <div class="col-12">
+            <hr>
           </div>
-          <div class="text-muted">
-            <small>收益率</small>
+          <div class="col-4 text-left border-right">
+            <div class>
+              <span class="text-orange invest-item-rate big">{{item.rate}}</span>
+              <small class="text-muted">%</small>
+            </div>
+            <div class="text-muted">
+              <small>收益率</small>
+            </div>
+          </div>
+          <div class="col-4 text-left text-muted border-right">
+            <div class>期限：{{item.days}} 天</div>
+            <div class="mt-2">金额：{{item.num / 10000}} 万</div>
+          </div>
+          <div class="col-4 text-center">
+            <router-link
+              :to="{path: '/invest/detail' , query : {uuid: item.uuid , token: token}}"
+              class="btn-invest-detail"
+            ></router-link>
           </div>
         </div>
-        <div class="col-4 text-left text-muted border-right">
-          <div class>期限：{{item.days}} 天</div>
-          <div class="mt-2">金额：{{item.num / 10000}} 万</div>
+      </template>
+      <template v-else>
+        <div class="mt-5 text-center">
+          <div class="mt-5 text-center text-muted">无数据</div>
         </div>
-        <div class="col-4 text-center">
-          <router-link
-            :to="{path: '/invest/detail' , query : {uuid: item.uuid , token: token}}"
-            class="btn-invest-detail"
-          ></router-link>
-        </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>

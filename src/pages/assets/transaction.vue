@@ -24,24 +24,29 @@
       </div>
     </div>
 
-    <div class="row mt-2" v-for="item in userTransactions">
-      <div class="col-6 pt-2 pb-2">
-        <a
-          href="javascript:;"
-          @click="viewTransactionDetail(item)"
-          class="text-dark"
-        >{{ userTransactionTypes[item.type] || ''}}</a>
+    <template v-if="userTransactions && userTransactions.length">
+      <div class="row mt-2" v-for="item in userTransactions">
+        <div class="col-6 pt-2 pb-2">
+          <a
+            href="javascript:;"
+            @click="viewTransactionDetail(item)"
+            class="text-dark"
+          >{{ userTransactionTypes[item.type] || ''}}</a>
+        </div>
+        <div class="col-6 pt-2 pb-2 text-right">
+          <a href="javascript:;" class="text-dark" @click="viewTransactionDetail(item)">
+            <strong>{{ item.num }}</strong>
+          </a>
+        </div>
+        <div class="col-12">
+          <small class="text-muted">{{ formatTime(item.create_time)}}</small>
+          <hr>
+        </div>
       </div>
-      <div class="col-6 pt-2 pb-2 text-right">
-        <a href="javascript:;" class="text-dark" @click="viewTransactionDetail(item)">
-          <strong>{{ item.num }}</strong>
-        </a>
-      </div>
-      <div class="col-12">
-        <small class="text-muted">{{ formatTime(item.create_time)}}</small>
-        <hr>
-      </div>
-    </div>
+    </template>
+    <template v-else>
+      <div class="mt-5 text-center">无数据</div>
+    </template>
   </div>
 </template>
 
