@@ -3,13 +3,24 @@
     <div class="alert-box-bg"></div>
     <div class="alert-box-content">
       <div class="alert-box-hd">
-        <a href="javascript:;" @click="close()" class="text-white">关闭</a>
+        <a
+          v-if="closeText != ''"
+          href="javascript:;"
+          @click="close()"
+          class="text-white alert-box-close"
+        >&nbsp;</a>
       </div>
       <div class="alert-box-main">
-        <div class="alert-box-icon"></div>
+        <div class="alert-box-icon success text-center" v-if="messageType == 0">
+          <img src="./../images/icon/alert-box-success.png" alt width="60%">
+        </div>
+        <div class="alert-box-icon fail text-center" v-if="messageType == 1">
+          <img src="./../images/icon/alert-box-fail.png" alt width="60%">
+        </div>
         <div class="alert-box-message mt-3 pb-3" v-html="content"></div>
         <div class="alert-box-close">
           <a
+            v-if="closeText != ''"
             href="javascript:;"
             @click="close()"
             class="btn btn-primary btn-block btn-lg mt-3"

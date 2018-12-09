@@ -49,7 +49,7 @@
           <router-link
             :to="{path:'/invest/apply' , query: {invest_id : item.id , token : token}}"
             class="btn-invest-action"
-          >投入</router-link>
+          >&nbsp;</router-link>
         </div>
       </div>
     </div>

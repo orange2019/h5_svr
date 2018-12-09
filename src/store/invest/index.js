@@ -24,7 +24,7 @@ class InvestStore {
   async getUserList(state, route) {
     let ret = await Request.post("/api/investUserList?token=" + route.query.token, {})
     console.log("request invest list ret", ret);
-    state.investUserList = ret.data.list
+    state.investUserList = ret.data.list || []
     return ret
   }
 
@@ -33,9 +33,11 @@ class InvestStore {
       uuid: route.query.uuid
     })
     console.log("request invest list ret", ret);
-    state.investDetail = ret.data.info
-    state.investInfo = ret.data.invest
-
+    state.investDetail = ret.data.info || {}
+    state.investInfo = ret.data.invest || {}
+    state.investDetailSum = ret.data.sum || 0
+    state.investDetailTotal = ret.data.investTotal
+    state.investDetailTotalLeave = ret.data.investTotalLeave
     return ret
   }
 }

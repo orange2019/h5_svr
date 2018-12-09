@@ -10,7 +10,9 @@
     </div>
 
     <div class="text-center mt-5">
-      <div class>图标</div>
+      <div class>
+        <img src="./../../images/icon/assets-trans.png" alt width="15%">
+      </div>
       <div class="mt-2">{{ userTransactionTypes[userTransactionDetail.type]}}</div>
       <div class="mt-2">
         <strong class="h4">{{ userTransactionDetail.num }}</strong>

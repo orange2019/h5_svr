@@ -36,7 +36,7 @@
     <div class="invest-detail-info">
       <div class="row shadow-sm border rounded m-3 pt-1 pb-1">
         <div class="col-2">
-          <span></span>
+          <span class="assets-icon trans"></span>
         </div>
         <div class="col-8 pt-3 pb-3">
           <router-link
@@ -44,10 +44,10 @@
             class="text-muted"
           >我的账单</router-link>
         </div>
-        <div class="col-2 text-center pt-3 pb-3">
+        <div class="col-2 text-center">
           <router-link
             :to="{path:'/assets/transaction' , query: {token: token}}"
-            class="text-muted"
+            class="text-muted p-3 d-inline-block"
           >
             <i class="fas fa-chevron-right"></i>
           </router-link>
@@ -56,13 +56,16 @@
 
       <div class="row shadow-sm border rounded m-3 pt-1 pb-1">
         <div class="col-2">
-          <span></span>
+          <span class="assets-icon in"></span>
         </div>
         <div class="col-8 pt-3 pb-3">
           <router-link :to="{path:'/assets/in' , query: {token: token}}" class="text-muted">充值</router-link>
         </div>
-        <div class="col-2 text-center pt-3 pb-3">
-          <router-link :to="{path:'/assets/in' , query: {token: token}}" class="text-muted">
+        <div class="col-2 text-center">
+          <router-link
+            :to="{path:'/assets/in' , query: {token: token}}"
+            class="text-muted p-3 d-inline-block"
+          >
             <i class="fas fa-chevron-right"></i>
           </router-link>
         </div>
@@ -70,13 +73,16 @@
 
       <div class="row shadow-sm border rounded m-3 pt-1 pb-1">
         <div class="col-2">
-          <span></span>
+          <span class="assets-icon out"></span>
         </div>
         <div class="col-8 pt-3 pb-3">
           <router-link :to="{path:'/assets/out' , query: {token: token}}" class="text-muted">提现</router-link>
         </div>
-        <div class="col-2 text-center pt-3 pb-3">
-          <router-link :to="{path:'/assets/out' , query: {token: token}}" class="text-muted">
+        <div class="col-2 text-center">
+          <router-link
+            :to="{path:'/assets/out' , query: {token: token}}"
+            class="text-muted p-3 d-inline-block"
+          >
             <i class="fas fa-chevron-right"></i>
           </router-link>
         </div>
@@ -84,13 +90,16 @@
 
       <div class="row shadow-sm border rounded m-3 pt-1 pb-1">
         <div class="col-2">
-          <span></span>
+          <span class="assets-icon team"></span>
         </div>
         <div class="col-8 pt-3 pb-3">
           <router-link :to="{path:'/assets/team' , query: {token: token}}" class="text-muted">团队贡献</router-link>
         </div>
-        <div class="col-2 text-center pt-3 pb-3">
-          <router-link :to="{path:'/assets/team' , query: {token: token}}" class="text-muted">
+        <div class="col-2 text-center">
+          <router-link
+            :to="{path:'/assets/team' , query: {token: token}}"
+            class="text-muted p-3 d-inline-block"
+          >
             <i class="fas fa-chevron-right"></i>
           </router-link>
         </div>

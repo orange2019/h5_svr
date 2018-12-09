@@ -60,9 +60,7 @@
           <span class="text-muted">预计收益</span>
         </div>
         <div class="col-6 text-right">
-          <strong
-            class="text-dark"
-          >{{ parseInt(investDetail.num * investDetail.days / investDetail.rate / 100 * 100000000) / 100000000 }}</strong>
+          <strong class="text-dark">{{ investDetailTotal }}</strong>
         </div>
       </div>
 
@@ -71,7 +69,7 @@
           <span class="text-muted">已收益</span>
         </div>
         <div class="col-6 text-right">
-          <strong class="text-danger">15</strong>
+          <strong class="text-danger">{{investDetailSum }}</strong>
         </div>
       </div>
 
@@ -80,7 +78,7 @@
           <span class="text-muted">剩余收益</span>
         </div>
         <div class="col-6 text-right">
-          <strong class="text-primary">10050.00</strong>
+          <strong class="text-primary">{{ investDetailTotalLeave }}</strong>
         </div>
       </div>
 
@@ -141,6 +139,15 @@ export default {
     investInfo() {
       return this.$store.state.investInfo;
     },
+    investDetailSum() {
+      return this.$store.state.investDetailSum;
+    },
+    investDetailTotal() {
+      return this.$store.state.investDetailTotal;
+    },
+    investDetailTotalLeave() {
+      return this.$store.state.investDetailTotalLeave;
+    },
     token() {
       return this.$route.query.token;
     }
@@ -152,11 +159,11 @@ export default {
     },
     getDays(timestamp) {
       let now = parseInt(Date.now() / 1000);
-      return Math.ceil((now - timestamp) / 24 / 3600);
+      return Math.floor((now - timestamp) / 24 / 3600);
     },
     getDaysRate(timestamp, days) {
       let now = parseInt(Date.now() / 1000);
-      let val = (Math.ceil((now - timestamp) / 24 / 3600) / days) * 100;
+      let val = (Math.floor((now - timestamp) / 24 / 3600) / days) * 100;
       val = val + "%";
     }
   }

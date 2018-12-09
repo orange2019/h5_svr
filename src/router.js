@@ -10,6 +10,7 @@ import Invest from './pages/invest/index.vue'
 import InvestList from './pages/invest/list.vue'
 import InvestDetail from './pages/invest/detail.vue'
 import InvestApply from './pages/invest/apply.vue'
+import InvestConfirm from './pages/invest/confirm.vue'
 import Assets from './pages/assets/index.vue'
 import AssetsTransaction from './pages/assets/transaction.vue'
 import AssetsDetail from './pages/assets/detail.vue'
@@ -48,6 +49,10 @@ let routes = [{
     component: InvestApply
   },
   {
+    path: '/invest/confirm',
+    component: InvestConfirm
+  },
+  {
     path: '/assets',
     component: Assets
   },
@@ -75,6 +80,8 @@ let routes = [{
     path: '/auth/err',
     component: AuthError
   },
+
+
 ]
 
 export function createRouter() {

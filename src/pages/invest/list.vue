@@ -34,8 +34,8 @@
         <div class="col-4 text-center">
           <router-link
             :to="{path: '/invest/detail' , query : {uuid: item.uuid , token: token}}"
-            class
-          >点击</router-link>
+            class="btn-invest-detail"
+          ></router-link>
         </div>
       </div>
     </div>

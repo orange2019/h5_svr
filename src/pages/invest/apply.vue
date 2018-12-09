@@ -45,14 +45,19 @@
         </div>
 
         <div class="col-12 mt-5 pt-5">
-          <a
+          <!-- <a
             href="javascript:;"
             class="btn-radius-big btn btn-block btn-lg btn-primary"
             @click="alertBox(1)"
-          >立即投入</a>
+          >立即投入</a>-->
+          <router-link
+            :to="{path:'/invest/confirm' , query: {token: token , invest_id: investId }}"
+            class="btn-radius-big btn btn-block btn-lg btn-primary"
+          >立即投入</router-link>
         </div>
       </div>
     </div>
+
     <alert-box
       :isOpen="alertBoxObj.isOpen"
       :messageType="alertBoxObj.type"
@@ -84,6 +89,9 @@ export default {
     },
     token() {
       return this.$route.query.token;
+    },
+    investId() {
+      return this.$route.query.invest_id;
     }
   },
   methods: {
