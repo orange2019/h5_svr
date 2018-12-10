@@ -17,6 +17,8 @@ import AssetsDetail from './pages/assets/detail.vue'
 import AssetsIn from './pages/assets/in.vue'
 import AssetsOut from './pages/assets/out.vue'
 import AssetsTeam from './pages/assets/team.vue'
+import AssetsTradePwd from './pages/assets/tradePwd.vue'
+import AssetsTransfer from './pages/assets/transfer.vue'
 import AuthError from './pages/auth/error.vue'
 import Invite from './pages/invite/index.vue'
 import InviteList from './pages/invite/list.vue'
@@ -74,6 +76,14 @@ let routes = [{
   {
     path: '/assets/out',
     component: AssetsOut
+  },
+  {
+    path: '/assets/setTradePwd',
+    component: AssetsTradePwd
+  },
+  {
+    path: '/assets/transfer',
+    component: AssetsTransfer
   },
   {
     path: '/assets/team',
