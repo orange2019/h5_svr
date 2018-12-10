@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import NewsStore from './news/index'
 import InvestStore from './invest/index'
-import AssetsStore from './assets/index'
 import InviteStore from './invite/index'
+import AssetsStore from './assets/index'
 
 Vue.use(Vuex)
 
@@ -105,6 +105,7 @@ const store = new Vuex.Store({
       state
     }, data) {
       return await AssetsStore.getChildInvest(state, data.route)
+
     },
     async inviteListGet({
       state

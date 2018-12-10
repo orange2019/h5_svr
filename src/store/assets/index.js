@@ -26,4 +26,4 @@ class AssetsStroe {
   }
 }
 
-module.exports = new AssetsStroe
+module.exports = new AssetsStroe()

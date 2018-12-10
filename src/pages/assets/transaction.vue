@@ -31,11 +31,16 @@
             href="javascript:;"
             @click="viewTransactionDetail(item)"
             class="text-dark"
-          >{{ userTransactionTypes[item.type] || ''}}</a>
+          >{{ userTransactionTypes[item.type] || ''}} {{ item.type}}</a>
         </div>
         <div class="col-6 pt-2 pb-2 text-right">
           <a href="javascript:;" class="text-dark" @click="viewTransactionDetail(item)">
-            <strong>{{ item.num }}</strong>
+            <span v-if="item.type == 1 || item.type == 3 || item.type == 4">
+              <strong class="text-danger">- {{ item.num }}</strong>
+            </span>
+            <span v-else>
+              <strong class>{{ item.num }}</strong>
+            </span>
           </a>
         </div>
         <div class="col-12">
