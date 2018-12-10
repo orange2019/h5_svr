@@ -3,7 +3,7 @@
     <div class="page-top page-new-list-top row bg-primary">
       <div class="text-center col-12">资讯列表</div>
     </div>
-    <div class="page-sub-nav row">
+    <div class="page-sub-nav row border-bottom">
       <div class="col-3 offset-3">
         <a
           href="javascript:;"
@@ -19,27 +19,24 @@
         >行业资讯</a>
       </div>
     </div>
-    <template v-if="items && items.length">
-      <div v-for="item in items" class="row page-news-list pt-2 pb-2">
-        <div class="col-4">
-          <router-link :to="{path: 'news/detail' , query: {news_id: item.id}}">
-            <img :src="item.cover" :alt="item.title" width="100%">
-          </router-link>
-        </div>
-        <div class="col-7">
-          <h3 class="news-list-item-title">
-            <router-link :to="{path: 'news/detail' , query: {news_id: item.id}}">{{ item.title }}</router-link>
-          </h3>
-          <small class="time">
-            <i class="far fa-clock"></i>
-            {{ formatTime(item.post_time , 'YYYY-MM-DD') }}
-          </small>
-        </div>
+    <div class="bg-light pt-2"></div>
+
+    <div v-for="item in items" class="row page-news-list pt-2 pb-2 border-bottom">
+      <div class="col-4">
+        <router-link :to="{path: 'news/detail' , query: {news_id: item.id}}">
+          <img :src="item.cover" :alt="item.title" width="100%">
+        </router-link>
       </div>
-    </template>
-    <template v-else>
-      <div class="mt-5 text-center text-muted">无数据</div>
-    </template>
+      <div class="col-7">
+        <h3 class="news-list-item-title">
+          <router-link :to="{path: 'news/detail' , query: {news_id: item.id}}">{{ item.title }}</router-link>
+        </h3>
+        <small class="time">
+          <i class="far fa-clock"></i>
+          {{ formatTime(item.post_time , 'YYYY-MM-DD') }}
+        </small>
+      </div>
+    </div>
   </div>
 </template>
 

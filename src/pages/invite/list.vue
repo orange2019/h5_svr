@@ -16,18 +16,13 @@
       <div class="col-12 bg-light pt-2"></div>
     </div>
 
-    <template v-if="inviteList && inviteList.length">
-      <div class="row pt-3" v-for="item in inviteList">
-        <div class="col-6">{{ item.user_info ? item.user_info.realname : '无名'}}</div>
-        <div class="col-6 text-muted text-right">{{ formatTime(item.create_time) }}</div>
-        <div class="col-12">
-          <hr>
-        </div>
+    <div class="row pt-3" v-for="item in inviteList">
+      <div class="col-6">{{ item.user_info ? item.user_info.realname : '无名'}}</div>
+      <div class="col-6 text-muted text-right">{{ formatTime(item.create_time) }}</div>
+      <div class="col-12">
+        <hr>
       </div>
-    </template>
-    <template v-else>
-      <div class="text-center text-muted mt-5">无数据</div>
-    </template>
+    </div>
   </div>
 </template>
 

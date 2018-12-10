@@ -19,25 +19,18 @@
     </div>
     <div class="bg-light pt-1"></div>
 
-    <template v-if="userInvestChild && userInvestChild.length">
-      <div class="row mt-3" v-for="item in userInvestChild">
-        <div class="col-6">
-          <div class>{{ item.user_info ? item.user_info.realname: '无名' }}</div>
-          <div class>{{ formatTime(item.create_time) }}</div>
-        </div>
-        <div class="col-6 text-right">
-          <div class="mt-2 h4">{{ item.num }}</div>
-        </div>
-        <dir class="col-12">
-          <hr>
-        </dir>
+    <div class="row mt-3" v-for="item in userInvestChild">
+      <div class="col-6">
+        <div class>{{ item.user_info ? item.user_info.realname: '无名' }}</div>
+        <div class>{{ formatTime(item.create_time) }}</div>
       </div>
-    </template>
-    <template v-else>
-      <div class="mt-5 text-center">
-        <div class="mt-5 text-center text-muted">无数据</div>
+      <div class="col-6 text-right">
+        <div class="mt-2 h4">{{ item.num }}</div>
       </div>
-    </template>
+      <dir class="col-12">
+        <hr>
+      </dir>
+    </div>
   </div>
 </template>
 

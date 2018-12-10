@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="page-top bg-primary text-center">首页</div>
-    <div class="page-sub-nav bg-white text-center">
+    <div class="page-sub-nav bg-white text-center border-bottom">
       <div class="btn-group" role="group" aria-label="Basic">
         <a href="javascript:;" class="btn btn-primary btn-sm pl-3 pr-3 text-white">产品列表</a>
         <router-link
@@ -12,8 +12,8 @@
     </div>
 
     <div class="page-invest-list">
-      <template v-if="investList && investList.length">
-        <div class="row mt-3 bg-white pt-3 pb-3" v-for="item in investList">
+      <div v-for="item in investList">
+        <div class="row mt-3 bg-white pt-3 pb-3">
           <div class="col-6">{{ item.name }}</div>
           <div class="col-6 text-right">每日等比收益</div>
           <div class="col-12">
@@ -53,12 +53,8 @@
             >&nbsp;</router-link>
           </div>
         </div>
-      </template>
-      <template v-else>
-        <div class="mt-5 text-center">
-          <div class="mt-5 text-center text-muted">无数据</div>
-        </div>
-      </template>
+        <div class="bg-light pt-2"></div>
+      </div>
     </div>
   </div>
 </template>

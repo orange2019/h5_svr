@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="page-top bg-primary text-center">首页</div>
-    <div class="page-sub-nav bg-white text-center">
+    <div class="page-sub-nav bg-white text-center border-bottom">
       <div class="btn-group" role="group" aria-label="Basic">
         <router-link
           :to="{path : '/invest' , query : {token: token}}"
@@ -12,8 +12,8 @@
     </div>
 
     <div class="page-invest-list">
-      <template v-if="investUserList && investUserList.length">
-        <div class="row mt-3 bg-white pt-3 pb-3" v-for="item in investUserList">
+      <div v-for="item in investUserList">
+        <div class="row mt-3 bg-white pt-3 pb-3">
           <div class="col-6">{{ item.invest.name }}</div>
           <div class="col-6 text-right">每日等比收益</div>
           <div class="col-12">
@@ -39,12 +39,8 @@
             ></router-link>
           </div>
         </div>
-      </template>
-      <template v-else>
-        <div class="mt-5 text-center">
-          <div class="mt-5 text-center text-muted">无数据</div>
-        </div>
-      </template>
+        <div class="bg-light pt-2"></div>
+      </div>
     </div>
   </div>
 </template>
