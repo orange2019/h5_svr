@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <div class="col-12 pt-3" v-if="userCanUseTokenNum >= investInfo.num">
+        <!-- <div class="col-12 pt-3" v-if="userCanUseTokenNum >= investInfo.num">
           <form @submit.prevent="confirmInvest()">
             <div class="form-group p-3">
               <input type="password" v-model="postData.password" class="form-control">
@@ -37,6 +37,13 @@
               >
             </div>
           </form>
+        </div>-->
+        <div class="mt-5 col-12" v-if="userCanUseTokenNum >= investInfo.num">
+          <a
+            href="javascript:;"
+            class="btn-radius-big btn btn-block btn-lg btn-primary"
+            @click="setTradePwdBoxShow"
+          >立即支付</a>
         </div>
 
         <div v-else class="col-12 text-center mt-5">
@@ -45,6 +52,13 @@
       </div>
     </div>
 
+    <number-keyboard
+      :isOpen="setTradePwbIsOpen"
+      :title="setTradePwbTitle"
+      :message="setTradePwbMsg"
+      @close="setTradePwbClose"
+      @submit="confirmInvest"
+    ></number-keyboard>
     <alert-box
       :isOpen="alertBoxObj.isOpen"
       :messageType="alertBoxObj.type"
@@ -57,7 +71,7 @@
 
 <script>
 import Request from "./../../api/common/request.js";
-
+import MD5 from "md5.js";
 export default {
   asyncData({ store, route }) {
     // store.dispatch("userAssetsGet", { route: route });
@@ -72,7 +86,12 @@ export default {
         isOpen: 0,
         content: "SUCCESS",
         closeText: "确认"
-      }
+      },
+
+      setTradePwbIsOpen: 0,
+      setTradePwbMsg: "",
+      setTradePwbTitle: "",
+      errMsg: ""
     };
   },
   computed: {
@@ -87,6 +106,14 @@ export default {
     }
   },
   methods: {
+    setTradePwdBoxShow() {
+      this.setTradePwbIsOpen = 1;
+      this.setTradePwbTitle = `<small class="text-muted">购买产品</small>`;
+      this.setTradePwbMsg = "请输入6位数字交易密码";
+    },
+    setTradePwbClose() {
+      this.setTradePwbIsOpen = 0;
+    },
     alertBox(
       isOpen = 0,
       type = 0,
@@ -103,8 +130,10 @@ export default {
     alertBoxClose() {
       this.alertBoxObj.isOpen = 0;
     },
-    async confirmInvest() {
+    async confirmInvest(val) {
+      let password = new MD5().update(val).digest("hex");
       let postData = this.postData;
+      postData.password = password;
       postData.invest_id = this.investInfo.id;
 
       console.log("confirmInvest postData", postData);
@@ -122,6 +151,8 @@ export default {
           this.alertBoxObj.content = "交易成功";
           this.alertBoxObj.closeText = "确认";
           this.alertBoxObj.type = 0;
+
+          this.setTradePwbIsOpen = 1;
 
           this.$router.push({ path: "/invest/list", query: { token: token } });
         } else {
