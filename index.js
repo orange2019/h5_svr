@@ -76,6 +76,12 @@ app.get('/test', (req, res) => {
 </head>
 <body>
   <h1>hello world</h1>
+  <button id="test">click me</button>
+  <script>
+    document.getElementById("test").onclick = function(el) {
+     document.getElementById("test").innerText = Date.now(); 
+    }
+  </script>
 </body>
 </html>`)
 })
