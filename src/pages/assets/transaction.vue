@@ -7,9 +7,9 @@
         </a>
       </div>
       <div class="col-8 text-center">我的账单</div>
-      <div class="col-2">筛选</div>
+      <!-- <div class="col-2">筛选</div> -->
     </div>
-    <div class="row pt-2 pb-2 bg-light">
+    <!-- <div class="row pt-2 pb-2 bg-light">
       <div class="col-3 text-truncate">
         <small class="text-muted">开始时间</small>
       </div>
@@ -22,8 +22,7 @@
       <div class="col-3">
         <input type="date" class="border-0 bg-light">
       </div>
-    </div>
-
+    </div>-->
     <template v-if="userTransactions && userTransactions.length">
       <div class="row mt-2" v-for="item in userTransactions">
         <div class="col-6 pt-2 pb-2">
@@ -31,7 +30,7 @@
             href="javascript:;"
             @click="viewTransactionDetail(item)"
             class="text-dark"
-          >{{ userTransactionTypes[item.type] || ''}} {{ item.type}}</a>
+          >{{ userTransactionTypes[item.type] || ''}}</a>
         </div>
         <div class="col-6 pt-2 pb-2 text-right">
           <a href="javascript:;" class="text-dark" @click="viewTransactionDetail(item)">
@@ -52,6 +51,8 @@
     <template v-else>
       <div class="mt-5 text-center text-muted">无数据</div>
     </template>
+
+    <div class="pt-5"></div>
   </div>
 </template>
 

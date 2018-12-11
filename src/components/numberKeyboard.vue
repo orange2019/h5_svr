@@ -5,7 +5,7 @@
     </div>
 
     <div class="mt-5 p-5 text-center">
-      <span>{{ title }}</span>
+      <div v-html="title"></div>
       <div class="mt-3">
         <div class="text-center" v-html="message"></div>
       </div>
