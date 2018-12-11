@@ -18,6 +18,7 @@ class InvestStore {
     console.log("request invest list ret", ret);
     state.investInfo = ret.data.invest || {}
     state.userCanUseTokenNum = ret.data.canUseNum || 0
+    state.isSetTradePwd = ret.data.isSetTradePwd
     return ret
   }
 

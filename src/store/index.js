@@ -49,7 +49,8 @@ const store = new Vuex.Store({
       inviteList: [],
       inviteCount: 0,
       inviteInfo: {},
-      tradePwd: ''
+      tradePwd: '',
+      isSetTradePwd: 0
     }
   },
   mutations: {

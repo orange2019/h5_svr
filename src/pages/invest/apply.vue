@@ -44,16 +44,15 @@
           </div>
         </div>
 
-        <div class="col-12 mt-5 pt-5">
-          <!-- <a
-            href="javascript:;"
-            class="btn-radius-big btn btn-block btn-lg btn-primary"
-            @click="alertBox(1)"
-          >立即投入</a>-->
+        <div class="col-12 mt-5 pt-5" v-if="isSetTradePwd == 1">
           <router-link
             :to="{path:'/invest/confirm' , query: {token: token , invest_id: investId }}"
             class="btn-radius-big btn btn-block btn-lg btn-primary"
           >立即投入</router-link>
+        </div>
+        <div class="col-12 mt-5 pt-5" v-else>
+          <a href="javascript:;" class="btn-radius-big btn btn-block btn-lg btn-secondary">立即投入</a>
+          <div class="mt-3 text-muted text-center">还未设置交易密码，请到 [资产] 栏目中进行设置</div>
         </div>
       </div>
     </div>
@@ -92,6 +91,9 @@ export default {
     },
     investId() {
       return this.$route.query.invest_id;
+    },
+    isSetTradePwd() {
+      return this.$store.state.isSetTradePwd;
     }
   },
   methods: {
