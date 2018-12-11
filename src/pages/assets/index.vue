@@ -121,15 +121,50 @@
           </router-link>
         </div>
       </div>
+
+      <div v-if="userAssets.isSetTradePwd == 1" class="mt-5 text-center">
+        <a href="javascript:;" class="text-muted" @click="setTradePwdBoxShow">修改交易密码</a>
+      </div>
     </div>
+
+    <div v-if="userAssets.isSetTradePwd == 0" class="assets-set-pwd">
+      <div class="bg"></div>
+      <div class="main p-5 text-white text-center">
+        <div class="mb-3">您还未设置交易密码！</div>
+        <!-- <router-link
+          :to="{path:'/assets/setTradePwd' , query: {token: token}}"
+          class="btn btn-primary btn-lg btn-block btn-radius-big"
+        >设置交易密码</router-link>-->
+        <a
+          href="javascript:;"
+          class="btn btn-primary btn-lg btn-block btn-radius-big"
+          @click="setTradePwdBoxShow"
+        >设置交易密码</a>
+      </div>
+    </div>
+
+    <number-keyboard
+      :isOpen="setTradePwbIsOpen"
+      :message="setTradePwbMsg"
+      @close="setTradePwbClose"
+      @submit="setTradePwbSubmit"
+    ></number-keyboard>
   </div>
 </template>
 
 <script>
+import Request from "./../../api/common/request.js";
 import Moment from "moment";
+import MD5 from "md5.js";
 export default {
   asyncData({ store, route }) {
     store.dispatch("userAssetsGet", { route: route });
+  },
+  data() {
+    return {
+      setTradePwbIsOpen: 0,
+      setTradePwbMsg: ""
+    };
   },
   computed: {
     token() {
@@ -149,6 +184,33 @@ export default {
     formatTime(timestamp, format = "YYYY-MM-DD HH:mm") {
       let date = new Date(timestamp * 1000);
       return Moment(date).format(format);
+    },
+    setTradePwdBoxShow() {
+      this.setTradePwbIsOpen = 1;
+      this.setTradePwbMsg = "请输入6位数字交易密码";
+    },
+    setTradePwbClose() {
+      this.setTradePwbIsOpen = 0;
+    },
+    async setTradePwbSubmit(val) {
+      let password = new MD5().update(val).digest("hex");
+      console.log("password", password);
+      this.setTradePwbMsg = `<small class="text-muted">提交中...</small>`;
+
+      let ret = await Request.post("/api/setTradePwd?token=" + this.token, {
+        password: password
+      });
+      console.log("setTradePwbSubmit ret", ret);
+      if (ret.code == 0) {
+        this.setTradePwbMsg = "设置成功";
+
+        setTimeout(() => {
+          this.setTradePwbIsOpen = 0;
+          this.$store.state.userAssets.isSetTradePwd = 1;
+        }, 500);
+      } else {
+        this.setTradePwbMsg = `<small class="text-danger">设置失败</small>`;
+      }
     }
   }
 };

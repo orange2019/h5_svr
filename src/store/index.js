@@ -20,18 +20,7 @@ const userTransactionTypes = [
 const store = new Vuex.Store({
   state() {
     return {
-      newsData: {
-        id: "",
-        title: "",
-        description: "",
-        post_time: "",
-        content: "",
-        cover: "",
-        status: 1,
-        type: 0,
-        category: "",
-        sort: 0
-      },
+      newsData: {},
       listItems: [],
       listCount: 0,
       listOffset: 0,
@@ -59,7 +48,8 @@ const store = new Vuex.Store({
       userTeamCount: 0,
       inviteList: [],
       inviteCount: 0,
-      inviteInfo: {}
+      inviteInfo: {},
+      tradePwd: ''
     }
   },
   mutations: {
