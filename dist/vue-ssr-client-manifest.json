@@ -1,8 +1,8 @@
 {
   "publicPath": "/",
   "all": [
-    "css/app.4520b565ef713af4b8b0.css",
-    "css/app.4520b565ef713af4b8b0.css.map",
+    "css/app.2bf68b7b5d8b5a4d5820.css",
+    "css/app.2bf68b7b5d8b5a4d5820.css.map",
     "images/alert-box-close.png",
     "images/alert-box-fail.png",
     "images/alert-box-success.png",
@@ -15,11 +15,11 @@
     "images/invest-detail.png",
     "images/invite-top.png",
     "index.html",
-    "js/app.4520b565ef713af4b8b0.js",
-    "js/app.4520b565ef713af4b8b0.js.map"
+    "js/app.2bf68b7b5d8b5a4d5820.js",
+    "js/app.2bf68b7b5d8b5a4d5820.js.map"
   ],
   "initial": [
-    "js/app.4520b565ef713af4b8b0.js"
+    "js/app.2bf68b7b5d8b5a4d5820.js"
   ],
   "async": [],
   "modules": {
@@ -2063,7 +2063,7 @@
       4,
       3
     ],
-    "0ba47d85": [
+    "53f46ced": [
       14,
       0,
       0,
