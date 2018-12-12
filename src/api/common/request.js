@@ -29,6 +29,7 @@ class Request {
       console.log(ret)
       if (ret.code == -100 || ret.code == -101) {
         this.dataHref('/auth/err?code=' + ret.code)
+        return
       }
       return res.body
     } else {
