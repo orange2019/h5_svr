@@ -1,8 +1,8 @@
 {
   "publicPath": "/",
   "all": [
-    "css/app.d4f67144617a7e11f00b.css",
-    "css/app.d4f67144617a7e11f00b.css.map",
+    "css/app.f29f09c3c69969d76c54.css",
+    "css/app.f29f09c3c69969d76c54.css.map",
     "images/alert-box-close.png",
     "images/alert-box-fail.png",
     "images/alert-box-success.png",
@@ -14,11 +14,11 @@
     "images/invest-apply.png",
     "images/invest-detail.png",
     "index.html",
-    "js/app.d4f67144617a7e11f00b.js",
-    "js/app.d4f67144617a7e11f00b.js.map"
+    "js/app.f29f09c3c69969d76c54.js",
+    "js/app.f29f09c3c69969d76c54.js.map"
   ],
   "initial": [
-    "js/app.d4f67144617a7e11f00b.js"
+    "js/app.f29f09c3c69969d76c54.js"
   ],
   "async": [],
   "modules": {

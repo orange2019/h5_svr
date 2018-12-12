@@ -28,7 +28,7 @@ class Request {
       let ret = res.body
       console.log(ret)
       if (ret.code == -100 || ret.code == -101) {
-        location.href = '/auth/err?code=' + ret.code
+        window.location.href = '/auth/err?code=' + ret.code
       }
       return res.body
     } else {
