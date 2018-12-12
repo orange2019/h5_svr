@@ -28,7 +28,7 @@ class Request {
       let ret = res.body
       console.log(ret)
       if (ret.code == -100 || ret.code == -101) {
-        window.location.href = '/auth/err?code=' + ret.code
+        this.dataHref('/auth/err?code=' + ret.code)
       }
       return res.body
     } else {
@@ -36,6 +36,11 @@ class Request {
     }
 
 
+  }
+
+  dataHref(url) {
+    document.getElementById("href-true").setAttribute("href", url); //传入参数  
+    document.getElementById("href-true").click(); //模拟点击  
   }
 
 
