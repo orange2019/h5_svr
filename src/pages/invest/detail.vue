@@ -95,7 +95,7 @@
           <small class="text-muted">天</small>
         </div>
 
-        <div class="col-1"></div>
+        <!-- <div class="col-1"></div>
         <div class="col-10">
           <div class="progress mt-3" style="height:5px;">
             <div
@@ -111,8 +111,7 @@
         </div>
         <div class="col-1 text-left pl-0">
           <i class="fas fa-map-marker-alt text-muted"></i>
-        </div>
-
+        </div>-->
         <div class="mt-3 col-12 pt-3">
           <router-link
             :to="{path:'/invest'}"

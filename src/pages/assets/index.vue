@@ -122,7 +122,7 @@
         </div>
       </div>
 
-      <div v-if="userAssets.isSetTradePwd == 1" class="mt-5 text-center">
+      <div v-if="userAssets.isSetTradePwd == 1" class="mt-5 text-center pb-5">
         <a href="javascript:;" class="text-muted" @click="setTradePwdBoxShow">修改交易密码</a>
       </div>
     </div>

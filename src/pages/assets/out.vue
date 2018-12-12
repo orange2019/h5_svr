@@ -18,6 +18,7 @@
 
       <div class="text-muted mt-5 p-3">
         <hr>
+        <small class="text-muted">请上交易所进行提现操作</small>
       </div>
     </div>
   </div>
