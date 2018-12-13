@@ -20,12 +20,19 @@
     <div class="bg-light pt-1"></div>
 
     <div class="row mt-3" v-for="item in userInvestChild">
-      <div class="col-6">
+      <div class="col-2" v-if="item.user_info && item.user_info.avatar ">
+        <img :src="item.user_info.avatar" alt width="40" height="40" class="rounded-circle">
+      </div>
+      <div class="col-2" v-else>
+        <img src="./../../images/avatar.png" alt width="40" height="40" class="rounded-circle">
+      </div>
+
+      <div class="col-5">
         <div class>{{ item.user_info ? item.user_info.realname: '无名' }}</div>
         <div class>{{ formatTime(item.create_time) }}</div>
       </div>
-      <div class="col-6 text-right">
-        <div class="mt-2 h4">{{ item.num }}</div>
+      <div class="col-5 text-right">
+        <div class="mt-2 h4 text-word-break">{{ item.num }}</div>
       </div>
       <dir class="col-12">
         <hr>
