@@ -2,7 +2,7 @@
   <div class="page bg-primary">
     <div class="page-top page-new-list-top row bg-primary">
       <div class="col-2 pl-0">
-        <a href="javascript:android.close();" class="pl-3 d-block">
+        <a href="javascript:window.android.close();" class="pl-3 d-block">
           <span class="fas fa-chevron-left text-white"></span>
         </a>
       </div>
