@@ -22,6 +22,7 @@ import AuthError from './pages/auth/error.vue'
 import Invite from './pages/invite/index.vue'
 import InviteList from './pages/invite/list.vue'
 import InviteDownload from './pages/invite/download.vue'
+import ResetPwd from './pages/auth/resetPwd.vue'
 
 let routes = [{
     path: '/',
@@ -99,7 +100,10 @@ let routes = [{
   {
     path: '/invite/list',
     component: InviteList
-  }
+  }, {
+    path: '/resetPwd',
+    component: ResetPwd
+  },
 
 
 ]
