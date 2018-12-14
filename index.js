@@ -75,8 +75,8 @@ app.use('/api', async (req, res) => {
   let url = req.originalUrl;
   let apiLog = Log('api');
 
-  let apiUrl = (process.env.NODE_ENV == 'production') ? 'http://ec2-18-188-112-81.us-east-2.compute.amazonaws.com:4001' : '127.0.0.1:4001'
-  // let apiUrl = 'http://ec2-18-188-112-81.us-east-2.compute.amazonaws.com:4001'
+  // let apiUrl = (process.env.NODE_ENV == 'production') ? 'http://ec2-18-188-112-81.us-east-2.compute.amazonaws.com:4001' : '127.0.0.1:4001'
+  let apiUrl = 'http://127.0.0.1:4001'
   url = url.replace('/api', apiUrl + '/h5');
 
   const reqUuid = uuid.v4();
