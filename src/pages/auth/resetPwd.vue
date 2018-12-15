@@ -22,7 +22,7 @@
         </div>
         <div class="form-group mt-4">
           <input
-            type="password_again"
+            type="password"
             class="form-control border-top-0 border-left-0 border-right-0"
             placeholder="请再次输入密码"
             required
