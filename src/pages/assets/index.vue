@@ -7,7 +7,7 @@
     <div class="invest-detail-title row bg-white m-3 mt-5 pt-3 pb-3 rounded shadow-sm text-center">
       <div class="col-12 text-center">
         <span class="text-muted">总资产</span>
-        <div class="h4 text-primary mt-2">{{ userAssets.token_balance || 0 }}</div>
+        <div class="h4 text-primary mt-2">{{ totalNum || 0 }}</div>
       </div>
       <div class="col-12 h1 text-primary">
         <hr>
@@ -174,8 +174,11 @@ export default {
       return this.$store.state.userAssets;
     },
     canUseNum() {
+      return this.$store.state.userAssets.token_balance;
+    },
+    totalNum() {
       return (
-        this.$store.state.userAssets.token_balance -
+        this.$store.state.userAssets.token_balance +
         this.$store.state.userAssets.frozen_num
       );
     }

@@ -13,7 +13,7 @@
     <div class="mt-5 text-center">
       <small class="text-muted">最大可提取数量</small>
       <div class="mt-3 p-3">
-        <span class="h3">{{ userAssets.token_balance - userAssets.frozen_num }}</span>
+        <span class="h3">{{ userAssets.token_balance }}</span>
       </div>
 
       <div class="text-muted mt-5 p-3">
