@@ -42,6 +42,12 @@ class Request {
 
   jump(code) {
 
+    if (code == -100) {
+      if (window.android) {
+        window.android.goToLogin();
+      }
+    }
+
     let html = `<div class="page bg-white">
     <div class="p-5 text-center">
       <span></span>`
