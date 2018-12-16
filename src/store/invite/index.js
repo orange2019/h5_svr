@@ -18,12 +18,10 @@ class InviteStore {
 
   async getInfo(state, route) {
     let query = route.query;
-
+    let token = query.token
     console.log("/api/getInfo.query", query);
 
-    let ret = await Request.post("/api/invite", {
-      uuid: query.uuid
-    })
+    let ret = await Request.post("/api/invite?token=" + token, {})
 
     console.log("request getInfo ret", ret);
     state.inviteInfo = ret.data || {}

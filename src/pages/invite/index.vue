@@ -21,9 +21,9 @@
     <div class="p-3 mt-3" v-if="inviteInfo">
       <div class="bg-white rounded p-3">
         <div v-if="inviteInfo.avatar" class="text-center mt-3">
-          <img :src="inviteInfo.avatar" alt width="100" height="100" class="rounded-circle">
+          <img :src="inviteInfo.avatar" alt width="80" height="80" class="rounded-circle">
         </div>
-        <div v-if="inviteInfo.user_name" class="mt-3">{{ inviteInfo.user_name }}</div>
+        <div v-if="inviteInfo.user_name" class="mt-3 text-center">{{ inviteInfo.user_name }}</div>
 
         <div class="text-center mt-3">
           <!-- <small class="text-muted">邀请码</small> -->
@@ -55,6 +55,7 @@ export default {
   asyncData({ store, route }) {
     store.dispatch("inviteInfoGet", { route: route }).then(() => {
       let url = store.state.inviteInfo.qrcode_url;
+      console.log("qrcode_url", url);
       let qrcode = new QRCode("qrcode", {
         width: 120, //图像宽度
         height: 120, //图像高度
