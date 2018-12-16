@@ -28,6 +28,24 @@ class InviteStore {
 
     return ret
   }
+
+  async getUser(state, route) {
+    let query = route.query;
+    console.log("/api/getUser.query", query);
+    if (!query.uuid) {
+      state.inviteUser = {}
+      return
+    }
+
+    let ret = await Request.post("/api/inviteUser", {
+      uuid: query.uuid
+    })
+
+    console.log("request getUser ret", ret);
+    state.inviteUser = ret.data || {}
+
+    return ret
+  }
 }
 
 export default new InviteStore

@@ -34,7 +34,7 @@
     </div>
 
     <div class="invest-detail-info">
-      <div class="row shadow-sm border rounded m-3 pt-1 pb-1">
+      <div class="row shadow-sm border rounded m-3 pt-1 pb-1" @click="goTo('/assets/transaction')">
         <div class="col-2">
           <span class="assets-icon trans"></span>
         </div>
@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <div class="row shadow-sm border rounded m-3 pt-1 pb-1">
+      <div class="row shadow-sm border rounded m-3 pt-1 pb-1" @click="goTo('/assets/in')">
         <div class="col-2">
           <span class="assets-icon in"></span>
         </div>
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="row shadow-sm border rounded m-3 pt-1 pb-1">
+      <div class="row shadow-sm border rounded m-3 pt-1 pb-1" @click="goTo('/assets/out')">
         <div class="col-2">
           <span class="assets-icon out"></span>
         </div>
@@ -88,7 +88,7 @@
         </div>
       </div>
 
-      <div class="row shadow-sm border rounded m-3 pt-1 pb-1">
+      <div class="row shadow-sm border rounded m-3 pt-1 pb-1" @click="goTo('/assets/transfer')">
         <div class="col-2">
           <span class="assets-icon transfer"></span>
         </div>
@@ -105,7 +105,7 @@
         </div>
       </div>
 
-      <div class="row shadow-sm border rounded m-3 pt-1 pb-1">
+      <div class="row shadow-sm border rounded m-3 pt-1 pb-1" @click="goTo('/assets/team')">
         <div class="col-2">
           <span class="assets-icon team"></span>
         </div>
@@ -122,19 +122,31 @@
         </div>
       </div>
 
-      <div v-if="userAssets.isSetTradePwd == 1" class="mt-5 text-center pb-5">
-        <a href="javascript:;" class="text-muted" @click="setTradePwdBoxShow">修改交易密码</a>
+      <div
+        v-if="userAssets.isSetTradePwd == 1"
+        class="row shadow-sm border rounded m-3 pt-1 pb-1"
+        @click="setTradePwdBoxShow"
+      >
+        <div class="col-2">
+          <span class="assets-icon tradepwd"></span>
+        </div>
+        <div class="col-8 pt-3 pb-3">
+          <span class="text-muted">修改交易密码</span>
+        </div>
+        <div class="col-2 text-center">
+          <a href="javascript:;" class="text-muted p-3 d-inline-block">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       </div>
+
+      <div class="pt-5"></div>
     </div>
 
     <div v-if="userAssets.isSetTradePwd == 0" class="assets-set-pwd">
       <div class="bg"></div>
       <div class="main p-5 text-white text-center">
         <div class="mb-3">您还未设置交易密码！</div>
-        <!-- <router-link
-          :to="{path:'/assets/setTradePwd' , query: {token: token}}"
-          class="btn btn-primary btn-lg btn-block btn-radius-big"
-        >设置交易密码</router-link>-->
         <a
           href="javascript:;"
           class="btn btn-primary btn-lg btn-block btn-radius-big"
@@ -187,6 +199,9 @@ export default {
     formatTime(timestamp, format = "YYYY-MM-DD HH:mm") {
       let date = new Date(timestamp * 1000);
       return Moment(date).format(format);
+    },
+    goTo(path) {
+      this.$router.push({ path: path, query: { token: this.token } });
     },
     setTradePwdBoxShow() {
       this.setTradePwbIsOpen = 1;

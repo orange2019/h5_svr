@@ -30,7 +30,10 @@
           <!-- <div class="mt-3">{{ inviteInfo.qrcode_url }}</div> -->
           <div id="qrcode" ref="qrcode" style="width:120px;height:120px;margin:auto;"></div>
           <hr>
-          <small class="text-muted">扫码下载APP,输入邀请人号码注册</small>
+          <small class="text-muted">扫码输入邀请人号码注册,下载APP</small>
+          <!-- <div class="text-center">
+            <a :href="inviteInfo.qrcode_url">测试地址</a>
+          </div>-->
         </div>
 
         <div class="text-center mt-5">

@@ -50,6 +50,7 @@ const store = new Vuex.Store({
       inviteList: [],
       inviteCount: 0,
       inviteInfo: {},
+      inviteUser: {},
       tradePwd: '',
       isSetTradePwd: 0
     }
@@ -108,6 +109,11 @@ const store = new Vuex.Store({
       state
     }, data) {
       return await InviteStore.getInfo(state, data.route)
+    },
+    async getInviteUser({
+      state
+    }, data) {
+      return await InviteStore.getUser(state, data.route)
     }
   }
 })
