@@ -128,7 +128,7 @@ import Moment from "moment";
 export default {
   asyncData({ store, route }) {
     store.dispatch("investDetailGet", { route: route }).then(() => {
-      document.getElementById("progress-days").style.width = "25%";
+      // document.getElementById("progress-days").style.width = "25%";
     });
   },
   computed: {

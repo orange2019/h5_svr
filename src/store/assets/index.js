@@ -9,9 +9,20 @@ class AssetsStroe {
   }
 
   async getTransaction(state, route) {
-    let ret = await Request.post("/api/assetsTransaction?token=" + route.query.token, {})
+    let offset = state.userTransactionsOffset || 0
+    let ret = await Request.post("/api/assetsTransaction?token=" + route.query.token, {
+      offset: offset,
+      limit: 10
+    })
     console.log("request getTransaction ret", ret);
-    state.userTransactions = ret.data.rows || []
+    if (ret.data.rows && ret.data.rows.length) {
+      ret.data.rows.forEach(item => {
+        state.userTransactions.push(item)
+      });
+
+      state.userTransactionsOffset += 10
+    }
+    // state.userTransactions = ret.data.rows || []
     state.userTransactionsCount = ret.data.count || 0
     return ret
   }

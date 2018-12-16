@@ -41,6 +41,7 @@ const store = new Vuex.Store({
       userAssets: {},
       userTransactions: [],
       userTransactionsCount: 0,
+      userTransactionsOffset: 0,
       userTransactionTypes: userTransactionTypes,
       userTransactionDetail: {},
       userInvestChild: [],

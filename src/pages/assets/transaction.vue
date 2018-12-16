@@ -34,11 +34,11 @@
         </div>
         <div class="col-6 pt-2 pb-2 text-right">
           <a href="javascript:;" class="text-dark" @click="viewTransactionDetail(item)">
-            <span v-if="item.type == 1 || item.type == 3 || item.type == 4">
+            <span v-if="item.type == 2 || item.type == 3 || item.type == 4">
               <strong class="text-danger">- {{ item.num }}</strong>
             </span>
             <span v-else>
-              <strong class>{{ item.num }}</strong>
+              <strong class>+ {{ item.num }}</strong>
             </span>
           </a>
         </div>
@@ -46,6 +46,10 @@
           <small class="text-muted">{{ formatTime(item.create_time)}}</small>
           <hr>
         </div>
+      </div>
+      <div class="mt-1 text-center">
+        <a href="javascript:;" @click="getMoreList" class="btn btn-link" v-if="more == 1">更多...</a>
+        <a href="javascript:;" class="btn btn-link text-muted" v-else>无更多</a>
       </div>
     </template>
     <template v-else>
@@ -61,6 +65,11 @@ import Moment from "moment";
 export default {
   asyncData({ store, route }) {
     store.dispatch("userTransactionGet", { route: route });
+  },
+  data() {
+    return {
+      more: 1
+    };
   },
   computed: {
     token() {
@@ -81,6 +90,15 @@ export default {
     viewTransactionDetail(item) {
       this.$store.state.userTransactionDetail = item;
       this.$router.push("/assets/detail");
+    },
+    getMoreList() {
+      this.$store
+        .dispatch("userTransactionGet", { route: this.$route })
+        .then(ret => {
+          if (ret.data.rows.length == 0 || !ret.data.rows) {
+            this.more = 0;
+          }
+        });
     }
   }
 };
