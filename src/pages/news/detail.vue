@@ -10,7 +10,10 @@
     </div>
     <div class="page-news-title bg-white p-3">
       <h3 class="text-left">{{ newsData.title }}</h3>
-      <time class="text-muted text-xs">{{ newsData.post_time.replace('T' , ' ') }}</time>
+      <time
+        class="text-muted text-xs"
+        v-if="newsData && newsData.post_time"
+      >{{ newsData.post_time.replace('T' , ' ') }}</time>
     </div>
 
     <div class="mt-3 bg-white p-3 page-new-content">

@@ -9217,6 +9217,10 @@ body {
   background: url(/images/assets-transfer.png);
   background-size: 100% 100%;
 }
+.assets-icon.tradepwd {
+  background: url(/images/assets-tradepwd.png);
+  background-size: 100% 100%;
+}
 .assets-set-pwd {
   position: fixed;
   top: 0;
@@ -9237,4 +9241,4 @@ body {
   top: -70%;
 }
 
-/*# sourceMappingURL=app.c9d37120347f61221039.css.map*/
+/*# sourceMappingURL=app.7729c608590bc673f23e.css.map*/
