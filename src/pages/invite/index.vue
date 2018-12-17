@@ -41,6 +41,11 @@
             :to="{path: '/invite/list' , query: {token : token}}"
             class="btn btn-outline-primary btn-lg btn-block btn-radius-big"
           >我的好友</router-link>
+          <a
+            href="javascript:;"
+            class="btn btn-primary btn-lg btn-block btn-radius-big mt-3"
+            @click="zhuanfa"
+          >转发</a>
         </div>
 
         <div class="mb-5"></div>
@@ -80,7 +85,13 @@ export default {
     }
   },
   methods: {
-    close() {}
+    close() {},
+    zhuanfa() {
+      // 截图
+      if (window.android) {
+        window.android.captureScreen();
+      }
+    }
   }
 };
 </script>

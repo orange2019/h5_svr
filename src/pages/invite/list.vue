@@ -16,17 +16,21 @@
       <div class="col-12 bg-light pt-2"></div>
     </div>
 
-    <div class="row pt-3" v-for="item in inviteList">
-      <div class="col-2" v-if="item.user_info && item.user_info.avatar ">
-        <img :src="item.user_info.avatar" alt width="36" height="36" class="rounded-circle">
-      </div>
-      <div class="col-2" v-else>
-        <img src="./../../images/avatar.png" alt width="36" height="36" class="rounded-circle">
-      </div>
-      <div class="col-5">{{ item.user_info ? item.user_info.realname : '无名'}}</div>
-      <div class="col-5 text-muted text-right">{{ formatTime(item.create_time) }}</div>
-      <div class="col-12">
-        <hr>
+    <div class="text-center pt-3">{{ errMsg }}</div>
+    <div v-for="(items,i) in inviteList">
+      <div class="p-3">{{i+1}}级</div>
+      <div v-for="item in items" class="row pt-3">
+        <div class="col-2" v-if="item.user_info && item.user_info.avatar ">
+          <img :src="item.user_info.avatar" alt width="36" height="36" class="rounded-circle">
+        </div>
+        <div class="col-2" v-else>
+          <img src="./../../images/avatar.png" alt width="36" height="36" class="rounded-circle">
+        </div>
+        <div class="col-5">{{ item.user_info ? item.user_info.realname : '未实名'}}</div>
+        <div class="col-5 text-muted text-right">{{ formatTime(item.create_time) }}</div>
+        <div class="col-12">
+          <hr>
+        </div>
       </div>
     </div>
   </div>
@@ -38,12 +42,24 @@ export default {
   asyncData({ store, route }) {
     store.dispatch("inviteListGet", { route: route });
   },
+  data() {
+    return {
+      errMsg: "数据加载中..."
+    };
+  },
   computed: {
     inviteList() {
       return this.$store.state.inviteList;
     },
     inviteCount() {
       return this.$store.state.inviteCount;
+    }
+  },
+  mounted() {
+    if (this.$store.state.inviteCount) {
+      this.errMsg = "";
+    } else {
+      this.errMsg = "";
     }
   },
   methods: {

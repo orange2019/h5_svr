@@ -30,7 +30,8 @@ class Request {
       if (ret.code == -100 || ret.code == -101) {
         // this.dataHref('/auth/err?code=' + ret.code)
         this.jump(ret.code)
-        // return
+        ret.data = {}
+        return ret
       }
       return res.body
     } else {
@@ -62,12 +63,23 @@ class Request {
     } else if (code - 101) {
       html += `<p class="text-muted">您的账号还未通过审核，请耐心等待！</p>
         <hr>
-        <p>若还未上传实名认证资料，请到 [我的] - [实名认证] 中上传真实资料信息</p>`
+        <p>若还未上传实名认证资料，请到 [我的] - [实名认证] 中上传真实资料信息</p>
+        <a class="text-center">
+          <a href="javascript:;" class="btn btn-outline-primary pl-5 pr-5">返回</a>
+        </div>`
     }
     html += `</div>
       </div>`
 
-    document.getElementsByTagName('body')[0].innerHTML = html
+    document.getElementById('err-bg').innerHTML = html
+    document.getElementById('err-bg').style.display = 'block'
+
+    document.getElementById('err-bg').onclick = () => {
+
+      document.getElementById('err-bg').innerHTML = ''
+      document.getElementById('err-bg').style.display = 'none';
+      history.go(-1);
+    }
   }
 
 

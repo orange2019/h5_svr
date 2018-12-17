@@ -59,7 +59,7 @@
           <span class="assets-icon in"></span>
         </div>
         <div class="col-8 pt-3 pb-3">
-          <router-link :to="{path:'/assets/in' , query: {token: token}}" class="text-muted">充值</router-link>
+          <router-link :to="{path:'/assets/in' , query: {token: token}}" class="text-muted">充值 / 收款</router-link>
         </div>
         <div class="col-2 text-center">
           <router-link
@@ -189,10 +189,12 @@ export default {
       return this.$store.state.userAssets.token_balance;
     },
     totalNum() {
-      return (
-        this.$store.state.userAssets.token_balance +
-        this.$store.state.userAssets.frozen_num
-      );
+      // return (
+      //   this.$store.state.userAssets.token_balance +
+      //   this.$store.state.userAssets.frozen_num +
+      //   this.$store.state.userAssets.backup_num
+      // );
+      return this.$store.state.userAssets.token_total;
     }
   },
   methods: {

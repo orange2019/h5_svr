@@ -34,7 +34,7 @@
         </div>
         <div class="col-6 pt-2 pb-2 text-right">
           <a href="javascript:;" class="text-dark" @click="viewTransactionDetail(item)">
-            <span v-if="item.type == 2 || item.type == 3 || item.type == 4">
+            <span v-if="item.type == 2 || item.type == 3 || item.type == 4 || item.type == 7">
               <strong class="text-danger">- {{ item.num }}</strong>
             </span>
             <span v-else>

@@ -10,8 +10,13 @@ class InviteStore {
     let ret = await Request.post("/api/inviteList?token=" + query.token, {})
 
     console.log("request inviteList ret", ret);
-    state.inviteList = ret.data.rows;
-    state.inviteCount = ret.data.count;
+    state.inviteList = ret.data;
+
+    let count = 0
+    ret.data.forEach(item => {
+      count += item.length
+    });
+    state.inviteCount = count;
 
     return ret
   }
