@@ -68,8 +68,21 @@
           >
         </div>
 
+        <div class="form-group mt-3">
+          <router-link
+            to="/invite/download"
+            class="btn btn-outline-primary btn-block btn-lg btn-radius-big"
+          >下载APP</router-link>
+        </div>
+
         <div class="mt-3 text-center text-danger" v-html="errMsg"></div>
       </form>
+    </div>
+
+    <div class="wx-bg" :style="wxStyle">
+      <div class="text-right p-3 text-white">点击右上角
+        <br>选择在默认浏览器中打开
+      </div>
     </div>
   </div>
 </template>
@@ -97,7 +110,18 @@ export default {
         isPost: 0,
         text: "提交"
       },
-      errMsg: ""
+      errMsg: "",
+      wxStyle: {
+        position: "fixed",
+        width: "100%",
+        height: "100%",
+        top: "0",
+        left: "0",
+        "z-index": "100005",
+        background: "#000",
+        opacity: "0.8",
+        display: "none"
+      }
     };
   },
   computed: {
@@ -177,6 +201,25 @@ export default {
           this.errMsg = "发送验证码失败，请稍后重试";
         }
       }
+    }
+  },
+  mounted() {
+    console.log("页面加载完毕");
+    console.log(this.wxStyle.display);
+
+    function isWeiXin() {
+      //window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
+      var ua = window.navigator.userAgent.toLowerCase();
+      //通过正则表达式匹配ua中是否含有MicroMessenger字符串
+      if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    if (isWeiXin()) {
+      this.wxStyle.display = "block";
     }
   }
 };
