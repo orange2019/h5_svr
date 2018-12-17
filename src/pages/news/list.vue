@@ -24,7 +24,7 @@
     <div v-for="item in items" class="row page-news-list pt-2 pb-2 border-bottom">
       <div class="col-4">
         <router-link :to="{path: 'news/detail' , query: {news_id: item.id}}">
-          <img :src="item.cover" :alt="item.title" width="100%">
+          <img :src="item.cover + '@!news_cover'" :alt="item.title" width="100%">
         </router-link>
       </div>
       <div class="col-7">
