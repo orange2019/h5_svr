@@ -11,18 +11,18 @@
 
     <div class="mt-5">
       <div class="text-center">
-        <small class="text-muted">可用金额</small>
+        <small class="text-muted">可用数量</small>
         <div class="h3">{{ userAssets.token_balance}}</div>
       </div>
       <div class="mt-5">
         <div class="form-group row">
-          <label for class="col-3 col-form-label">金额</label>
+          <label for class="col-3 col-form-label">数量</label>
           <div class="col-9">
             <input
               type="text"
               class="form-control text-right border-top-0 border-left-0 border-right-0"
               v-model="postData.num"
-              placeholder="请输入转账金额"
+              placeholder="请输入转账数量"
             >
           </div>
         </div>
@@ -133,13 +133,13 @@ export default {
         return;
       }
       if (num > this.userAssets.token_balance || isNaN(num) || num <= 0) {
-        this.errMsg = "请输入正确的转账金额";
+        this.errMsg = "请输入正确的转账数量";
       } else if (!address) {
         this.errMsg = "请输入正确的转账地址";
       } else {
         this.errMsg = "";
         this.setTradePwbIsOpen = 1;
-        this.setTradePwbTitle = `<small class="text-muted">转账金额</small><div class="mt-3 h3">${num}</div>`;
+        this.setTradePwbTitle = `<small class="text-muted">转账数量</small><div class="mt-3 h3">${num}</div>`;
         this.setTradePwbMsg = "请输入6位数字交易密码";
       }
     },

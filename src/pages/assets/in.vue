@@ -18,13 +18,20 @@
     </div>
 
     <div class="mt-3 text-center">
-      <small class>钱包地址</small>
       <div>
-        <small class="text-muted">复制钱包地址,上交易所进行充值操作</small>
+        <small class="text-muted">复制钱包地址,从交易所提币到本钱包</small>
       </div>
 
       <div class="mt-3">
         <small>{{ userAssets.address }}</small>
+      </div>
+
+      <div class="mt-3">
+        <a
+          href="javascript:;"
+          class="btn btn-primary btn-lg btn-radius-big btn-copy"
+          @click="copyAddress"
+        >点击复制</a>
       </div>
     </div>
   </div>
@@ -32,6 +39,7 @@
 
 <script>
 import QRCode from "qrcodejs2";
+import XECommand from "xe-command";
 export default {
   computed: {
     token() {
@@ -54,6 +62,18 @@ export default {
     });
     qrcode.clear(); //清除二维码
     qrcode.makeCode(url); //生成另一个新的二维码
+  },
+  methods: {
+    copyAddress() {
+      let content = this.$store.state.userAssets.address;
+      document.querySelector(".btn-copy").addEventListener("click", evnt => {
+        if (XECommand.copy(content)) {
+          alert("复制成功");
+        } else {
+          alert("你所使用的手机不支持复制，请手动操作");
+        }
+      });
+    }
   }
 };
 </script>

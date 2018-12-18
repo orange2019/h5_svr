@@ -6,27 +6,36 @@
           <span class="fas fa-chevron-left text-white"></span>
         </a>
       </div>
-      <div class="text-center col-8">修改密码</div>
+      <div class="text-center col-8">修改手机号</div>
     </div>
 
     <div class="p-3">
-      <form @submit.prevent="confirmResetPwd()">
-        <div class="form-group">
+      <form @submit.prevent="confirmResetMobile()">
+        <div class="form-group mt-4">
           <input
-            type="password"
+            type="text"
             class="form-control border-top-0 border-left-0 border-right-0"
-            placeholder="请输入密码"
+            placeholder="请输入新手机号"
             required
-            v-model="postData.password"
+            v-model="postData.mobile_new"
           >
         </div>
         <div class="form-group mt-4">
           <input
+            type="text"
+            class="form-control border-top-0 border-left-0 border-right-0"
+            placeholder="请输入旧手机号"
+            required
+            v-model="postData.mobile"
+          >
+        </div>
+        <div class="form-group">
+          <input
             type="password"
             class="form-control border-top-0 border-left-0 border-right-0"
-            placeholder="请再次输入密码"
+            placeholder="请输入登录密码"
             required
-            v-model="postData.password_again"
+            v-model="postData.password"
           >
         </div>
 
@@ -62,7 +71,8 @@ export default {
     return {
       postData: {
         password: "",
-        password_again: "",
+        mobile: "",
+        mobile_new: "",
         verify_code: ""
       },
       errMsg: "",
@@ -80,8 +90,13 @@ export default {
   methods: {
     async sendSms() {
       if (this.sms.second == 60) {
-        let ret = await Request.post("/api/verifyCodeAuth?token=" + this.token);
-        console.log("/api/verifyCodeAuth", ret);
+        let mobile = this.postData.mobile_new;
+        if (mobile.length != 11) {
+          return;
+        }
+
+        let ret = await Request.post("/api/verifyCode", { mobile: mobile });
+        console.log("/api/verifyCode", ret);
 
         if (ret.code == 0) {
           this.errMsg = "";
@@ -105,16 +120,10 @@ export default {
         }
       }
     },
-    async confirmResetPwd() {
+    async confirmResetMobile() {
       let postData = this.postData;
-      let token = this.token;
 
-      if (postData.password != postData.password_again) {
-        this.errMsg = "两次输入密码不一致";
-        return;
-      }
-
-      let ret = await Request.post("/api/resetPwd?token=" + token, postData);
+      let ret = await Request.post("/api/resetMobile", postData);
       console.log(ret);
       if (ret.code == 0) {
         this.errMsg = "修改成功";
@@ -122,7 +131,7 @@ export default {
           window.android.goToLogin();
         }
       } else {
-        this.errMsg = "修改失败";
+        this.errMsg = "修改失败," + ret.message;
       }
     }
   }

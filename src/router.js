@@ -23,6 +23,7 @@ import Invite from './pages/invite/index.vue'
 import InviteList from './pages/invite/list.vue'
 import InviteDownload from './pages/invite/download.vue'
 import ResetPwd from './pages/auth/resetPwd.vue'
+import ResetMobile from './pages/auth/resetMobile.vue'
 import Register from './pages/auth/register.vue'
 
 let routes = [{
@@ -105,6 +106,10 @@ let routes = [{
   {
     path: '/resetPwd',
     component: ResetPwd
+  },
+  {
+    path: '/resetMobile',
+    component: ResetMobile
   },
   {
     path: '/register',
