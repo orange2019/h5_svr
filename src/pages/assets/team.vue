@@ -11,9 +11,8 @@
 
     <div class="row bg-white pt-2 pb-2 text-center">
       <div class="col-12">
-        共邀请好友
-        <span class="text-primary h5">{{userTeamCount}}</span>
-        人 , 总计贡献
+        <!-- <span class="text-primary h5">{{userTeamCount}}</span> -->
+        邀请好友总计贡献
         <span class="text-warning h5">{{ userAssets.invest_child || 0 }}</span>
       </div>
     </div>
