@@ -16,7 +16,8 @@ const userTransactionTypes = [
   '产品收益',
   '团队收益',
   '资产冻结',
-  '资产解冻'
+  '资产解冻',
+  '购买产品解冻'
 ]
 
 const store = new Vuex.Store({

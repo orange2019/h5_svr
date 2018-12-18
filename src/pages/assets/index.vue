@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="col-4 border-right">
-        <span class="text-muted">团队资产</span>
+        <span class="text-muted">团队贡献</span>
         <div class="text-truncate mt-2">
           <span class="h6">{{ userAssets.invest_child || 0}}</span>
         </div>
