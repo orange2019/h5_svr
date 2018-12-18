@@ -49,6 +49,7 @@ const store = new Vuex.Store({
       userTransactionDetail: {},
       userInvestChild: [],
       userInvestChildCount: 0,
+      userInvestChildInfo: {},
       userTeamCount: 0,
       inviteList: [],
       inviteCount: 0,
@@ -102,6 +103,11 @@ const store = new Vuex.Store({
     }, data) {
       return await AssetsStore.getChildInvest(state, data.route)
 
+    },
+    async userInvestChildInfoGet({
+      state
+    }, data) {
+      return await AssetsStore.getChildInvestInfo(state, data.route)
     },
     async inviteListGet({
       state

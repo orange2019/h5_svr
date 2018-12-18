@@ -17,6 +17,7 @@ import AssetsDetail from './pages/assets/detail.vue'
 import AssetsIn from './pages/assets/in.vue'
 import AssetsOut from './pages/assets/out.vue'
 import AssetsTeam from './pages/assets/team.vue'
+import AssetsTeamInfo from './pages/assets/teamInfo.vue'
 import AssetsTransfer from './pages/assets/transfer.vue'
 import AuthError from './pages/auth/error.vue'
 import Invite from './pages/invite/index.vue'
@@ -86,6 +87,10 @@ let routes = [{
   {
     path: '/assets/team',
     component: AssetsTeam
+  },
+  {
+    path: '/assets/teamInfo',
+    component: AssetsTeamInfo
   },
   {
     path: '/auth/err',

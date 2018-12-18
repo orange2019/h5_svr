@@ -21,13 +21,16 @@
       <div class="p-3">{{i+1}}级</div>
       <div v-for="item in items" class="row pt-3">
         <div class="col-2" v-if="item.user_info && item.user_info.avatar ">
-          <img :src="item.user_info.avatar" alt width="36" height="36" class="rounded-circle">
+          <img :src="item.user_info.avatar" alt width="40" height="40" class="rounded-circle">
         </div>
         <div class="col-2" v-else>
-          <img src="./../../images/avatar.png" alt width="36" height="36" class="rounded-circle">
+          <img src="./../../images/avatar.png" alt width="40" height="40" class="rounded-circle">
         </div>
-        <div class="col-5">{{ item.user_info ? item.user_info.realname : '未实名'}}</div>
-        <div class="col-5 text-muted text-right">{{ formatTime(item.create_time) }}</div>
+        <div class="col-5">
+          {{ item.user_info ? item.user_info.realname : '未实名'}}
+          <div class="text-muted">{{ mobileFormat(item.mobile)}}</div>
+        </div>
+        <div class="col-5 text-muted text-right pt-2">{{ formatTime(item.create_time) }}</div>
         <div class="col-12">
           <hr>
         </div>
@@ -66,6 +69,10 @@ export default {
     formatTime(timestamp, format = "YYYY-MM-DD HH:mm") {
       let date = new Date(timestamp * 1000);
       return Moment(date).format(format);
+    },
+
+    mobileFormat(mobile) {
+      return mobile.slice(0, 3) + "****" + mobile.slice(7, 11);
     }
   }
 };

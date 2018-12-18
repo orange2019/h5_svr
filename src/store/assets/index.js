@@ -35,6 +35,13 @@ class AssetsStroe {
     state.userTeamCount = ret.data.childCount || 0
     return ret
   }
+
+  async getChildInvestInfo(state, route) {
+    let ret = await Request.post("/api/investTeamInfo?token=" + route.query.token, {})
+    console.log("request investTeamInfo ret", ret);
+    state.userInvestChildInfo = ret.data || {}
+    return ret
+  }
 }
 
 module.exports = new AssetsStroe()

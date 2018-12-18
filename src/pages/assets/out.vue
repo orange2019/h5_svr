@@ -40,8 +40,17 @@
           </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="mt-3 p-3 text-center">
+          <a
+            href="javascript:;"
+            @click="scanQrCode"
+            class="btn btn-lg btn-outline-primary btn-radius-big btn-block"
+          >点击扫描二维码</a>
+        </div>
+
+        <div class="row mt-3">
           <div class="col-12">
+            <hr>
             <a
               href="javascript:;"
               @click="setTradePwdBoxShow"
@@ -98,6 +107,32 @@ export default {
     }
   },
   methods: {
+    scanQrCode() {
+      if (window.android) {
+        window.android.scanQrCode();
+      }
+
+      let getResult = () => {
+        console.log("get result ....");
+        setTimeout(() => {
+          let qrCodeCameraVisible = window.android.qrCodeCameraVisible();
+          // let qrCodeCameraVisible = false;
+          if (qrCodeCameraVisible) {
+            let result = window.android.getResult();
+
+            if (result) {
+              this.postData.to_address = result;
+            } else {
+              getResult();
+            }
+          } else {
+            getResult();
+          }
+        }, 1000);
+      };
+
+      getResult();
+    },
     setTradePwdBoxShow() {
       let num = this.postData.num;
       let address = this.postData.to_address;

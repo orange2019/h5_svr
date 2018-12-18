@@ -47,9 +47,7 @@
             <div class="row">
               <div class="col-9">
                 <span>{{item.mobile.slice(0,3)}}****{{searchMobile}}</span>
-                <span
-                  v-if="item.user_info && item.user_info.realname"
-                >{{ item.user_info && item.user_info.avatar }}</span>
+                <span v-if="item.user_info && item.user_info.realname">{{ item.user_info.realname }}</span>
               </div>
               <div class="col-3 text-right">
                 <a href="javascript:;" class="text-right btn btn-sm btn-outline-primary">选择</a>
@@ -66,8 +64,17 @@
           <div class="text-muted text-wrap-break pl-3 pr-3">{{ postData.to_address }}</div>
         </div>
 
-        <div class="row mt-5">
+        <div class="mt-3 p-3 text-center">
+          <a
+            href="javascript:;"
+            @click="scanQrCode"
+            class="btn btn-lg btn-outline-primary btn-radius-big btn-block"
+          >点击扫描二维码</a>
+        </div>
+
+        <div class="row mt-3">
           <div class="col-12">
+            <hr>
             <a
               href="javascript:;"
               @click="setTradePwdBoxShow"
@@ -125,6 +132,27 @@ export default {
     }
   },
   methods: {
+    scanQrCode() {
+      if (window.android) {
+        window.android.scanQrCode();
+      }
+
+      let getResult = () => {
+        setTimeout(() => {
+          if (window.android.qrCodeCameraVisible()) {
+            let result = window.android.getResult();
+
+            if (result) {
+              this.postData.to_address = result;
+            } else {
+              getResult();
+            }
+          }
+        }, 1000);
+      };
+
+      getResult();
+    },
     setTradePwdBoxShow() {
       let num = this.postData.num;
       let address = this.postData.to_address;

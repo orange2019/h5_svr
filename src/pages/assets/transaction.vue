@@ -1,5 +1,5 @@
 <template>
-  <div class="page bg-white">
+  <div class="page bg-white" id="page minirefresh-wrap">
     <div class="page-top row bg-primary">
       <div class="col-2 pl-0">
         <a href="javascript:history.go(-1);" class="pl-3 d-block">
@@ -24,7 +24,7 @@
       </div>
     </div>-->
     <template v-if="userTransactions && userTransactions.length">
-      <div class="row mt-2" v-for="item in userTransactions">
+      <div class="row mt-2 minirefresh-scroll" v-for="item in userTransactions" id="list">
         <div class="col-6 pt-2 pb-2">
           <a
             href="javascript:;"
@@ -71,6 +71,7 @@ export default {
       more: 1
     };
   },
+  mounted() {},
   computed: {
     token() {
       return this.$route.query.token;

@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="invest-detail-info">
+    <div class="invest-detail-info pb-5">
       <div class="row shadow-sm border rounded m-3 pt-1 pb-1" @click="goTo('/assets/transaction')">
         <div class="col-2">
           <span class="assets-icon trans"></span>
@@ -140,7 +140,7 @@
         </div>
       </div>
 
-      <div class="pt-5"></div>
+      <div class="pt-5">&nbsp;&nbsp;&nbsp;&nbsp;</div>
     </div>
 
     <div v-if="userAssets.isSetTradePwd == 0" class="assets-set-pwd">
