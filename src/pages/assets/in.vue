@@ -78,6 +78,7 @@ export default {
         this.errMsg = "复制成功";
       } else {
         this.errMsg = "你所使用的手机不支持复制，请手动操作";
+        window.android.copyContent(content);
       }
     }
   }
