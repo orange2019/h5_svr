@@ -148,7 +148,7 @@ export default {
               getResult();
             }
           }
-        }, 1000);
+        }, 2000);
       };
 
       getResult();

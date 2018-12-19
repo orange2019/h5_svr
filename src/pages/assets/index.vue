@@ -125,7 +125,7 @@
       <div
         v-if="userAssets.isSetTradePwd == 1"
         class="row shadow-sm border rounded m-3 pt-1 pb-1"
-        @click="setTradePwdBoxShow"
+        @click="goToSetTradePwd"
       >
         <div class="col-2">
           <span class="assets-icon tradepwd"></span>
@@ -231,6 +231,9 @@ export default {
       } else {
         this.setTradePwbMsg = `<small class="text-danger">设置失败</small>`;
       }
+    },
+    goToSetTradePwd() {
+      this.$router.push("/resetTradePwd?token=" + this.token);
     }
   }
 };

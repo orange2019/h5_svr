@@ -26,6 +26,7 @@ import InviteDownload from './pages/invite/download.vue'
 import ResetPwd from './pages/auth/resetPwd.vue'
 import ResetMobile from './pages/auth/resetMobile.vue'
 import Register from './pages/auth/register.vue'
+import ResetTradePwd from './pages/auth/resetTradePwd.vue'
 
 let routes = [{
     path: '/',
@@ -111,6 +112,10 @@ let routes = [{
   {
     path: '/resetPwd',
     component: ResetPwd
+  },
+  {
+    path: '/resetTradePwd',
+    component: ResetTradePwd
   },
   {
     path: '/resetMobile',
