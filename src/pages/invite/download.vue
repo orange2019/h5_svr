@@ -2,7 +2,7 @@
   <div class="page">
     <div class="mt-5 p-5 text-center">
       <a
-        href="http://kxm-img.oss-cn-shenzhen.aliyuncs.com/app/Download/kxm_wallet.apk"
+        href="http://kxm-img.oss-cn-shenzhen.aliyuncs.com/app/Download/mck_wallet.apk"
         class="btn btn-lg btn-primary btn-block btn-radius-big"
       >点击下载</a>
       <hr>
