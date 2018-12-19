@@ -120,10 +120,12 @@ export default {
           if (qrCodeCameraVisible) {
             let result = window.android.getResult();
 
-            if (result) {
+            if (result && result != "close") {
               this.postData.to_address = result;
-            } else {
+            } else if (result == "") {
               getResult();
+            } else {
+              return;
             }
           } else {
             getResult();

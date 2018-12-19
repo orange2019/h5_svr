@@ -19,20 +19,22 @@
 
     <div class="mt-3 text-center">
       <div>
-        <small class="text-muted">复制钱包地址,从交易所提币到本钱包</small>
-      </div>
-
-      <div class="mt-3">
         <small>{{ userAssets.address }}</small>
       </div>
 
-      <div class="mt-3">
+      <div class="mt-2">
+        <small class="text-muted">复制钱包地址,从交易所提币到本钱包</small>
+      </div>
+
+      <div class="mt-3 pl-3 pr-3">
         <a
           href="javascript:;"
-          class="btn btn-primary btn-lg btn-radius-big btn-copy"
+          class="btn btn-primary btn-lg btn-radius-big btn-copy btn-block"
           @click="copyAddress"
         >点击复制</a>
       </div>
+
+      <div class="mt-3 text-center text-danger">{{errMsg}}</div>
     </div>
   </div>
 </template>
@@ -41,6 +43,11 @@
 import QRCode from "qrcodejs2";
 import XECommand from "xe-command";
 export default {
+  data() {
+    return {
+      errMsg: ""
+    };
+  },
   computed: {
     token() {
       return this.$route.query.token;
@@ -65,14 +72,13 @@ export default {
   },
   methods: {
     copyAddress() {
+      this.errMsg = "";
       let content = this.$store.state.userAssets.address;
-      document.querySelector(".btn-copy").addEventListener("click", evnt => {
-        if (XECommand.copy(content)) {
-          alert("复制成功");
-        } else {
-          alert("你所使用的手机不支持复制，请手动操作");
-        }
-      });
+      if (XECommand.copy(content)) {
+        this.errMsg = "复制成功";
+      } else {
+        this.errMsg = "你所使用的手机不支持复制，请手动操作";
+      }
     }
   }
 };
