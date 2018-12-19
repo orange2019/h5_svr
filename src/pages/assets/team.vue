@@ -43,6 +43,10 @@
         <hr>
       </dir>
     </div>
+
+    <div class="mt-3 text-center" v-if="userInvestChildCount > 10">
+      <a href="javascript:;" @click="getMore" v-html="more.text"></a>
+    </div>
   </div>
 </template>
 
@@ -50,14 +54,28 @@
 import Moment from "moment";
 export default {
   asyncData({ store, route }) {
+    store.state.userInvestChildOffset = 0;
+    store.state.userInvestChild = [];
     store.dispatch("userInvestChildGet", { route: route });
   },
+  data() {
+    return {
+      more: {
+        show: 1,
+        text: `<span class="text-primary">更多</span>`
+      }
+    };
+  },
+  mounted() {},
   computed: {
     token() {
       return this.$route.query.token;
     },
     userInvestChild() {
       return this.$store.state.userInvestChild;
+    },
+    userInvestChildCount() {
+      return this.$store.state.userInvestChildCount;
     },
     userAssets() {
       return this.$store.state.userAssets;
@@ -73,6 +91,16 @@ export default {
     },
     mobileFormat(mobile) {
       return mobile.slice(0, 3) + "****" + mobile.slice(7, 11);
+    },
+    getMore() {
+      this.$store
+        .dispatch("userInvestChildGet", { route: this.$route })
+        .then(ret => {
+          if (ret.code != 0 || !ret.data.rows || !ret.data.rows.length) {
+            // this.more.show = 0;
+            this.more.text = `<span class="text-muted">无更多</span>`;
+          }
+        });
     }
   }
 };

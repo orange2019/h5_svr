@@ -28,11 +28,23 @@ class AssetsStroe {
   }
 
   async getChildInvest(state, route) {
-    let ret = await Request.post("/api/investTeam?token=" + route.query.token, {})
+    let offset = state.userInvestChildOffset || 0
+    let limit = 20;
+    let ret = await Request.post("/api/investTeam?token=" + route.query.token, {
+      offset: offset,
+      limit: limit
+    })
     console.log("request getChildInvest ret", ret);
-    state.userInvestChild = ret.data.rows || []
+    ret.data.rows.forEach(row => {
+      state.userInvestChild.push(row)
+    })
+
     state.userInvestChildCount = ret.data.count || 0
     state.userTeamCount = ret.data.childCount || 0
+
+    if (ret.code == 0 && ret.data.rows.length) {
+      state.userInvestChildOffset += limit
+    }
     return ret
   }
 
