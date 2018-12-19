@@ -9087,6 +9087,9 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 0;
   margin: 0;
 }
+input {
+  outline: none !important;
+}
 html,
 body {
   width: 100%;
@@ -9241,4 +9244,4 @@ body {
   top: -70%;
 }
 
-/*# sourceMappingURL=app.d97b8a5342ebcbcecd08.css.map*/
+/*# sourceMappingURL=app.88336128f302ca1c4a88.css.map*/
