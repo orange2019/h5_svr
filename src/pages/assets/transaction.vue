@@ -56,7 +56,7 @@
       <div class="mt-5 text-center text-muted">无数据</div>
     </template>
 
-    <div class="pt-5"></div>
+    <div class="pt-5">&nbsp;</div>
   </div>
 </template>
 
