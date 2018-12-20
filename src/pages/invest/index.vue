@@ -43,7 +43,7 @@
               <small class="text-muted">万</small>
             </div>
             <div class="text-muted">
-              <small>投入卡路里</small>
+              <small>细胞通证</small>
             </div>
           </div>
           <div class="col-3 text-right">
