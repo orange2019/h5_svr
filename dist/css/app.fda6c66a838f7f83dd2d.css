@@ -9090,6 +9090,10 @@ a.text-dark:hover, a.text-dark:focus {
 input {
   outline: none !important;
 }
+input:focus {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
 html,
 body {
   width: 100%;
@@ -9244,4 +9248,4 @@ body {
   top: -70%;
 }
 
-/*# sourceMappingURL=app.2449d86cfd4392f52a2e.css.map*/
+/*# sourceMappingURL=app.fda6c66a838f7f83dd2d.css.map*/
