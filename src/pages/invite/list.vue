@@ -18,7 +18,8 @@
 
     <div class="text-center pt-3">{{ errMsg }}</div>
     <div v-for="(items,i) in inviteList">
-      <div class="p-3">{{i+1}}级</div>
+      <div class="p-3" v-if="i == 0">{{i+1}}星</div>
+      <div class="p-3" v-if="i == 1">{{i+1}}星</div>
       <div v-for="item in items" class="row pt-3">
         <div class="col-2" v-if="item.user_info && item.user_info.avatar ">
           <img :src="item.user_info.avatar" alt width="40" height="40" class="rounded-circle">
