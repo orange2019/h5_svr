@@ -19,7 +19,7 @@
           <div class="col-12">
             <hr>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-3 text-left pr-0">
             <div class>
               <span class="text-orange invest-item-rate">{{ item.rate }}</span>
               <small class="text-muted">%</small>
