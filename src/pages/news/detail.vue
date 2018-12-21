@@ -19,6 +19,8 @@
     <div class="mt-3 bg-white p-3 page-new-content">
       <div class="news-content mt-5" v-html="newsData.content"></div>
     </div>
+
+    <div class="pt-5">&nbsp;</div>
   </div>
 </template>
 
