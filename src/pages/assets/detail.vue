@@ -59,16 +59,17 @@ export default {
       return Moment(date).format(format);
     },
     transWalletAddress(address) {
-      address = address.slice(2, address.length);
-      console.log(address);
-      address = address
+      let newAddress = address.slice(2, address.length);
+      console.log("address", address);
+      console.log("newAddress", newAddress);
+      newAddress = newAddress
         .split("")
         .reverse()
         .join("");
-      console.log(address);
-      address = address.toUpperCase();
-      console.log(address);
-      return address;
+      console.log("newAddress", newAddress);
+      newAddress = newAddress.toUpperCase();
+      console.log("newAddress", newAddress);
+      return newAddress;
     }
   }
 };

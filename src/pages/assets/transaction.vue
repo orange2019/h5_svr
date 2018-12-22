@@ -64,7 +64,8 @@
 import Moment from "moment";
 export default {
   asyncData({ store, route }) {
-    store.dispatch("userTransactionGet", { route: route });
+    store.state.userTransactionsOffset = 0;
+    store.dispatch("userTransactionGet", { route: route, data: { offset: 0 } });
   },
   data() {
     return {

@@ -185,12 +185,14 @@ export default {
       }
     },
     reTransWalletAddress(address) {
-      address = address
+      let newAddress = address
         .split("")
         .reverse()
         .join("");
-      address = "0x" + address.toLowerCase();
-      return address;
+      console.log("newAddress", newAddress);
+      newAddress = "0x" + newAddress.toLowerCase();
+      console.log("newAddress", newAddress);
+      return newAddress;
     }
   }
 };

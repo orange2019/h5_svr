@@ -16,9 +16,13 @@ class AssetsStroe {
     })
     console.log("request getTransaction ret", ret);
     if (ret.data.rows && ret.data.rows.length) {
-      ret.data.rows.forEach(item => {
-        state.userTransactions.push(item)
-      });
+      if (offset) {
+        ret.data.rows.forEach(item => {
+          state.userTransactions.push(item)
+        });
+      } else {
+        state.userTransactions = ret.data.rows
+      }
 
       state.userTransactionsOffset += 10
     }
@@ -35,9 +39,14 @@ class AssetsStroe {
       limit: limit
     })
     console.log("request getChildInvest ret", ret);
-    ret.data.rows.forEach(row => {
-      state.userInvestChild.push(row)
-    })
+
+    if (offset) {
+      ret.data.rows.forEach(row => {
+        state.userInvestChild.push(row)
+      })
+    } else {
+      state.userInvestChild = ret.data.rows
+    }
 
     state.userInvestChildCount = ret.data.count || 0
     state.userTeamCount = ret.data.childCount || 0
