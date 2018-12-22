@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
-import Reqeust from './api/common/request'
 import App from './app.vue'
 
 import {
@@ -13,6 +12,14 @@ import {
 import {
   sync
 } from 'vuex-router-sync'
+
+var VueTouch = require('vue-touch')
+Vue.use(VueTouch, {
+  name: 'v-touch'
+})
+VueTouch.config.swipe = {
+  threshold: 100 //手指左右滑动距离
+}
 
 
 export function componentRegister() {
@@ -67,6 +74,10 @@ export function createApp() {
   })
 
   // app.$mount('#app')
-  
-  return { app , router , store }
+
+  return {
+    app,
+    router,
+    store
+  }
 }

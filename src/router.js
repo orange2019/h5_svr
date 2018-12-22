@@ -27,6 +27,8 @@ import ResetPwd from './pages/auth/resetPwd.vue'
 import ResetMobile from './pages/auth/resetMobile.vue'
 import Register from './pages/auth/register.vue'
 import ResetTradePwd from './pages/auth/resetTradePwd.vue'
+import Show from './pages/show/index.vue'
+import ShowInfo from './pages/show/detail.vue'
 
 let routes = [{
     path: '/',
@@ -124,8 +126,19 @@ let routes = [{
   {
     path: '/register',
     component: Register
-  }
+  },
 
+  //商城部分了
+
+  {
+    path: '/show',
+    component: Show
+  },
+
+  {
+    path: '/show/info',
+    component: ShowInfo
+  },
 
 
 ]

@@ -161,6 +161,7 @@ export default {
 
       let postData = this.postData;
       postData.password = password;
+      postData.to_address = this.reTransWalletAddress(postData.to_address);
 
       this.setTradePwbMsg = `提交中...`;
 
@@ -182,6 +183,14 @@ export default {
       } else {
         this.setTradePwbMsg = `<span class="text-danger">${ret.message}</span>`;
       }
+    },
+    reTransWalletAddress(address) {
+      address = address
+        .split("")
+        .reverse()
+        .join("");
+      address = "0x" + address.toLowerCase();
+      return address;
     }
   }
 };

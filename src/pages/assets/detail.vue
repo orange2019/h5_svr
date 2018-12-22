@@ -34,7 +34,7 @@
 
     <div class="row mt-3" v-if="userTransactionDetail.hash">
       <div class="col-4">交易单号</div>
-      <div class="col-8 text-wrap-break">{{ userTransactionDetail.hash }}</div>
+      <div class="col-8 text-wrap-break">{{ transWalletAddress(userTransactionDetail.hash) }}</div>
     </div>
   </div>
 </template>
@@ -57,6 +57,18 @@ export default {
     formatTime(timestamp, format = "YYYY-MM-DD HH:mm") {
       let date = new Date(timestamp * 1000);
       return Moment(date).format(format);
+    },
+    transWalletAddress(address) {
+      address = address.slice(2, address.length);
+      console.log(address);
+      address = address
+        .split("")
+        .reverse()
+        .join("");
+      console.log(address);
+      address = address.toUpperCase();
+      console.log(address);
+      return address;
     }
   }
 };
