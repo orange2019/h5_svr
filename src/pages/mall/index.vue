@@ -19,26 +19,26 @@
       <img src alt width="100%" height="200">
     </div>
 
-    <div class="bg-light">
+    <div class="bg-light" v-for="item in goods.list">
       <div class="pt-2">
         <div class="bg-white" @click="goToGoodsInfo">
-          <img src alt width="100%" height="180">
+          <img :src="item.cover" alt width="100%" height="180">
         </div>
 
         <div class="row bg-white pt-3" @click="goToGoodsInfo">
           <div class="col-8 text-truncate">
-            <span>产品标题产品标题产品标题产品标题产品标题产品标题</span>
+            <span>{{ item.name }}</span>
           </div>
           <div class="col-4 text-right">
-            <span class="text-danger">200.00</span>
+            <span class="text-danger">{{ item.price }}</span>
           </div>
         </div>
 
         <div class="row bg-white pt-3 pb-3">
           <div class="col-8 text-truncate" @click="goToGoodsInfo">
-            <small class="text-muted">简单秒速简单秒速简单秒速简单秒速简单秒速简单秒速简单秒速简单秒速简单秒速简单秒速</small>
+            <small class="text-muted">{{ item.description }}</small>
           </div>
-          <div class="col-4 text-right" @click="cartAdd">
+          <div class="col-4 text-right" @click="cartAdd(item)">
             <a href="javascript:;" class="btn btn-sm btn-outline-warning btn-buy">立即购买</a>
           </div>
         </div>
@@ -65,11 +65,11 @@
 
       <div class="row">
         <div class="col-3 pr-0">
-          <img src alt width="100%" height="100">
+          <img :src="cartItem.cover" alt width="100%" height="100">
         </div>
         <div class="col-9 pt-1">
-          <div class>产品标题产品标题产品标题产品标题产品标题产品标题</div>
-          <div class="pt-3 text-danger">200.00</div>
+          <div class>{{cartItem.name}}</div>
+          <div class="pt-3 text-danger">{{ cartItem.price }}</div>
         </div>
         <div class="col-12">
           <div class="border-bottom pb-3"></div>
@@ -122,9 +122,27 @@
 
 <script>
 export default {
+  asyncData({ store, route }) {
+    let goodsList = store.state.goods.list;
+    let offset = store.state.goods.offset;
+    if (offset == 0 && goodsList.length == 0) {
+      store.dispatch("mallGoodsListGet", { route: route, body: {} });
+    }
+  },
+  computed: {
+    goods() {
+      return this.$store.state.goods;
+    }
+  },
   data() {
     return {
-      addCartClass: { "d-none": true }
+      addCartClass: { "d-none": true },
+      cartItem: {
+        name: "",
+        cover: "",
+        price: "",
+        count: 1
+      }
     };
   },
   methods: {
@@ -133,8 +151,13 @@ export default {
         path: "/mall/goods"
       });
     },
-    cartAdd() {
+    cartAdd(item) {
+      console.log(item);
       this.addCartClass["d-none"] = false;
+      this.cartItem.name = item.name;
+      this.cartItem.cover = item.cover;
+      this.cartItem.price = item.price;
+      this.cartItem.count = item.count;
     },
     cartAddClose() {
       this.addCartClass["d-none"] = true;

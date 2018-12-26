@@ -87,7 +87,7 @@
         </div>
         <div class="col-6">
           <span>合计</span>
-          <span class="text-danger">200000.00</span>
+          <span class="text-danger">{{ cart.total || 0}}</span>
         </div>
         <div class="col-3 text-right">
           <a href="javascript:;" class="btn btn-primary btn-sm btn-block">结算</a>
@@ -99,6 +99,14 @@
 
 <script>
 export default {
+  asyncData({ store, route }) {
+    store.dispatch("cartInfoGet");
+  },
+  computed: {
+    cart() {
+      return this.$store.state.cart || {};
+    }
+  },
   methods: {
     onSwipeCartItemLeft(i) {
       console.log("left");

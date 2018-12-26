@@ -56,4 +56,4 @@ class AssetsStroe {
   }
 }
 
-module.exports = new AssetsStroe()
+export default new AssetsStroe

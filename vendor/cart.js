@@ -1,3 +1,6 @@
+/**
+ * 简单购物车
+ */
 class Cart {
 
   constructor(cartObj) {
@@ -5,11 +8,18 @@ class Cart {
   }
 
   info() {
+    let list = this.list()
+    let total = this.total()
+    let count = this.count()
 
+    return {
+      list,
+      total,
+      count
+    }
   }
 
   list() {
-
     return this.cart
   }
 
@@ -57,6 +67,10 @@ class Cart {
     })
 
     this.cart = newCart
+  }
+
+  clear() {
+    this.cart = []
   }
 }
 

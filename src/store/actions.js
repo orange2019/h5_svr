@@ -3,6 +3,8 @@ import InvestAction from './invest/index'
 import InviteAction from './invite/index'
 import AssetsAction from './assets/index'
 import VideoAction from './video/index'
+import CartAction from './cart/index'
+import MallAction from "./mall/index"
 
 export default {
   async newsListGet({
@@ -70,6 +72,16 @@ export default {
     state
   }, data) {
     return await VideoAction.getList(state, data.route, data.body)
+  },
+  async cartInfoGet({
+    state
+  }) {
+    return await CartAction.getInfo(state)
+  },
+  async mallGoodsListGet({
+    state
+  }, data) {
+    return await MallAction.getList(state, data.route, data.body)
   }
 
 }

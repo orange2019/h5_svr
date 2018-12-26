@@ -55,6 +55,12 @@ export default {
     limit: 0,
     count: 0,
     info: {}
+  },
+  cart: {},
+  goods: {
+    list: [],
+    offset: 0,
+    limit: 10
   }
 
 }
