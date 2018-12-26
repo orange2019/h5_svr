@@ -1,15 +1,15 @@
 const userTransactionTypes = [
-  '',
-  '充值',
-  '提币',
-  '转账',
-  '购买产品',
-  '产品收益',
-  '团队收益',
-  '资产冻结',
-  '资产解冻',
-  '购买产品解冻'
-]
+  "",
+  "充值",
+  "提取通证",
+  "转账",
+  "购买产品",
+  "产品收益",
+  "团队收益",
+  "资产冻结",
+  "资产解冻",
+  "购买产品解冻"
+];
 
 export default {
   newsData: {},
@@ -45,7 +45,7 @@ export default {
   inviteCount: 0,
   inviteInfo: {},
   inviteUser: {},
-  tradePwd: '',
+  tradePwd: "",
   isSetTradePwd: 0,
   // 上面太乱了，从这里分模块 \(^o^)/~
 
@@ -56,5 +56,4 @@ export default {
     count: 0,
     info: {}
   }
-
-}
+};

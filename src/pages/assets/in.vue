@@ -23,7 +23,7 @@
       </div>
 
       <div class="mt-2">
-        <small class="text-muted">复制钱包地址,从交易所提币到本钱包</small>
+        <small class="text-muted">复制钱包地址,从交易所提取通证到本钱包</small>
       </div>
 
       <div class="mt-3 pl-3 pr-3">

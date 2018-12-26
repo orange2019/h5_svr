@@ -6,7 +6,7 @@
           <span class="fas fa-chevron-left text-white"></span>
         </a>
       </div>
-      <div class="col-8 text-center">提币</div>
+      <div class="col-8 text-center">提取通证</div>
     </div>
 
     <div class="mt-5">
@@ -22,18 +22,18 @@
               type="text"
               class="form-control text-right border-top-0 border-left-0 border-right-0"
               v-model="postData.num"
-              placeholder="请输入提币数量"
+              placeholder="请输入提取通证数量"
             >
           </div>
         </div>
 
         <div class="form-group row mt-3">
-          <label for class="col-3 col-form-label">提币至</label>
+          <label for class="col-3 col-form-label">提取通证至</label>
           <div class="col-9">
             <input
               type="text"
               class="form-control text-right border-top-0 border-left-0 border-right-0"
-              placeholder="请输入交易所提供的提币地址"
+              placeholder="请输入交易所提供的提取通证地址"
               required
               v-model="postData.to_address"
             >
@@ -143,7 +143,7 @@ export default {
         return;
       }
       if (num > this.userAssets.token_balance || isNaN(num) || num <= 0) {
-        this.errMsg = "请输入正确的转账金额";
+        this.errMsg = "请输入正确的转账通证数量";
       } else if (!address) {
         this.errMsg = "请输入正确的转账地址";
       } else {

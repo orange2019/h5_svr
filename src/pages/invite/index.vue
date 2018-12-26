@@ -23,7 +23,7 @@
         <div v-if="inviteInfo.avatar" class="text-center mt-3">
           <img :src="inviteInfo.avatar" alt width="80" height="80" class="rounded-circle">
         </div>
-        <div v-if="inviteInfo.user_name" class="mt-3 text-center">{{ inviteInfo.user_name }}</div>
+        <div v-if="inviteInfo.user_name" class="mt-3 text-center">{{ inviteInfoName }}</div>
 
         <div class="text-center mt-3">
           <!-- <small class="text-muted">邀请码</small> -->
@@ -79,6 +79,14 @@ export default {
   computed: {
     inviteInfo() {
       return this.$store.state.inviteInfo;
+    },
+    inviteInfoName() {
+      return (
+        this.$store.state.inviteInfo.user_name.slice(
+          0,
+          this.$store.state.inviteInfo.user_name.length - 1
+        ) + "*"
+      );
     },
     token() {
       return this.$route.query.token;

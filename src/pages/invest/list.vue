@@ -30,7 +30,7 @@
           </div>
           <div class="col-4 text-left text-muted border-right">
             <div class>期限：{{item.days}} 天</div>
-            <div class="mt-2">金额：{{item.num / 10000}} 万</div>
+            <div class="mt-2">通证：{{item.num / 10000}} 万</div>
           </div>
           <div class="col-4 text-center">
             <router-link
