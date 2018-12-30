@@ -81,6 +81,9 @@ app.use('/api', async (req, res) => {
 
   // let apiUrl = (process.env.NODE_ENV == 'production') ? 'http://ec2-18-188-112-81.us-east-2.compute.amazonaws.com:4001' : '127.0.0.1:4001'
   let apiUrl = 'http://127.0.0.1:4001'
+  if (process.env.NODE_ENV = 'test') {
+    apiUrl = "127.0.0.1:5001";
+  }
   if (url.indexOf('/api/mall') > -1) {
     url = url.replace('/api/mall', apiUrl + '/mall');
   } else {
@@ -224,7 +227,10 @@ if (nodeEnv == 'dev') {
   }
 }
 
-const PROT = process.env.port || 4003;
+let PROT = process.env.port || 4003;
+if (process.env.NODE_ENV = 'test') {
+  PROT = 5003
+}
 
 app.listen(PROT, function () {
   console.log(`Vue express ssr server: app listening on port ${PROT}!\n`);
