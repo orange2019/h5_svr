@@ -228,7 +228,7 @@ if (nodeEnv == 'dev') {
 }
 
 let PROT = process.env.port || 4003;
-if (process.env.NODE_ENV = 'test') {
+if (process.env.NODE_ENV == 'test') {
   PROT = 5003
 }
 
