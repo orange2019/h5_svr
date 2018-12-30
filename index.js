@@ -22,11 +22,11 @@ const bodyParser = require('body-parser'); // 处理请求中body的内容
 const methodOverride = require('method-override');
 
 const session = require('express-session'); // session中间件
-const RedisStrore = require('connect-redis')(session);
-const sessionStore = {
-  host: process.env.NODE_ENV == "production" ? "127.0.0.1" : "47.52.193.103",
-  port: 6379
-};
+// const RedisStrore = require('connect-redis')(session);
+// const sessionStore = {
+//   host: process.env.NODE_ENV == "production" ? "127.0.0.1" : "47.52.193.103",
+//   port: 6379
+// };
 // session 支持
 app.use(
   session({
@@ -38,7 +38,7 @@ app.use(
       maxAge: 1000 * 60 * 60 * 24 * 7
     },
     secret: "123456", // session加密
-    store: new RedisStrore(sessionStore)
+    // store: new RedisStrore(sessionStore)
   })
 );
 

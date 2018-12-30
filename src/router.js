@@ -16,6 +16,7 @@ import AssetsTransaction from './pages/assets/transaction.vue'
 import AssetsDetail from './pages/assets/detail.vue'
 import AssetsIn from './pages/assets/in.vue'
 import AssetsOut from './pages/assets/out.vue'
+import AssetsOutLogs from './pages/assets/outLogs.vue'
 import AssetsTeam from './pages/assets/team.vue'
 import AssetsTeamInfo from './pages/assets/teamInfo.vue'
 import AssetsTransfer from './pages/assets/transfer.vue'
@@ -91,6 +92,10 @@ let routes = [{
   {
     path: '/assets/out',
     component: AssetsOut
+  },
+  {
+    path: '/assets/outLogs',
+    component: AssetsOutLogs
   },
   {
     path: '/assets/transfer',

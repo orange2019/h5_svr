@@ -37,6 +37,11 @@ export default {
   }, data) {
     return await AssetsAction.getUserAsset(state, data.route)
   },
+  async userAssetsOutLogsGet({
+    state
+  }, data) {
+    return await AssetsAction.getUserAssetOutLogs(state, data.route)
+  },
   async userTransactionGet({
     state
   }, data) {

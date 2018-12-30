@@ -6,7 +6,7 @@
           <span class="fas fa-chevron-left text-white"></span>
         </a>
       </div>
-      <div class="col-8 text-center">提币</div>
+      <div class="col-8 text-center">提币申请</div>
     </div>
 
     <div class="mt-5">
@@ -60,6 +60,10 @@
 
           <div class="col-12 mt-3 text-center">
             <small class="text-danger">{{ errMsg }}</small>
+          </div>
+
+          <div class="col-12 mt-3 text-center">
+            <router-link :to="{path:'/assets/outLogs' , query: {token: token}}">提币申请记录</router-link>
           </div>
         </div>
       </div>

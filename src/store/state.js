@@ -31,6 +31,7 @@ export default {
   investDetailTotal: 0,
   investDetailTotalLeave: 0,
   userAssets: {},
+  userAssetsOutLogs: [],
   userTransactions: [],
   userTransactionsCount: 0,
   userTransactionsOffset: 0,

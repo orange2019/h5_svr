@@ -8,6 +8,12 @@ class AssetsStroe {
     return ret
   }
 
+  async getUserAssetOutLogs(state, route) {
+    let ret = await Request.post('/api/assetsOutLogs?token=' + route.query.token, {})
+    state.userAssetsOutLogs = ret.data.rows
+    return ret
+  }
+
   async getTransaction(state, route) {
     let offset = state.userTransactionsOffset || 0
     let ret = await Request.post("/api/assetsTransaction?token=" + route.query.token, {
