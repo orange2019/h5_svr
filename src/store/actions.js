@@ -73,6 +73,16 @@ export default {
   }, data) {
     return await VideoAction.getList(state, data.route, data.body)
   },
+  async mallUserGet({
+    state
+  }, data) {
+    return await MallAction.getUser(state, data.route)
+  },
+  async mallUserGetAddress({
+    state
+  }, data) {
+    return await MallAction.getUserAddress(state, data.route)
+  },
   async cartInfoGet({
     state
   }) {
@@ -82,6 +92,16 @@ export default {
     state
   }, data) {
     return await MallAction.getList(state, data.route, data.body)
+  },
+  async mallOrderListGet({
+    state
+  }, data) {
+    return await MallAction.getOrderList(state, data.route, data.body)
+  },
+  async mallOrderInfoGet({
+    state
+  }, data) {
+    return await MallAction.getOrderInfo(state, data.route, data.body)
   }
 
 }

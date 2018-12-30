@@ -56,11 +56,34 @@ export default {
     count: 0,
     info: {}
   },
-  cart: {},
+  mallUser: {
+    auth: false,
+    info: {}
+  },
+  cart: {
+
+  },
+  cartCheck: {
+    itemCheck: [],
+    itemCheckVal: {},
+    itemCheckTotal: 0,
+  },
   goods: {
     list: [],
     offset: 0,
     limit: 10
+  },
+  order: {
+    list: [],
+    offset: 0,
+    limit: 10,
+    info: {}
+  },
+  address: {
+    list: [],
+    default: {},
+    modify: {},
+    modifyIndex: 0
   }
 
 }

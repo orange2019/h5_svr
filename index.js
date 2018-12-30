@@ -74,6 +74,7 @@ const uuid = require('uuid');
 const crypt = require('./crypt');
 
 app.use('/cart', require('./middleware/cart'))
+
 app.use('/api', async (req, res) => {
   let url = req.originalUrl;
   let apiLog = Log('api');

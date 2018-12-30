@@ -7,7 +7,9 @@
     "js": "node"
   },
   "watch": [
-    "index.js"
+    "index.js",
+    "middleware/*",
+    "vendor/*"
   ],
   "ignore": [
     ".svn",
