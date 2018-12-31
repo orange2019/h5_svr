@@ -198,7 +198,8 @@ export default {
         stock: 0
       },
       cartItemCount: 1,
-      cartItemStock: 0
+      cartItemStock: 0,
+      swipeAuto: null
     };
   },
   computed: {
@@ -228,22 +229,23 @@ export default {
     },
     goodsBanners() {
       return this.$store.state.goodsBanners;
-    },
-    swipeAutoGoodsBanner() {
-      return this.$store.state.swipeAutoGoodsBanner;
     }
   },
+  beforeRouteLeave(to, from, next) {
+    window.swipeAuto1 = null;
+    next();
+  },
   created() {
-    if (!this.swipeAutoGoodsBanner) {
-      let swipeAuto = () => {
-        this.onSwipeRight();
-        setTimeout(() => {
-          swipeAuto();
-        }, 5000);
-      };
-      this.$store.state.swipeAutoGoodsBanner = true;
-      swipeAuto();
-    }
+    window.swipeAuto1 = () => {
+      this.onSwipeRight();
+      setTimeout(() => {
+        if (typeof window.swipeAuto1 == "function") {
+          window.swipeAuto1();
+        }
+      }, 5000);
+    };
+
+    window.swipeAuto1();
   },
   methods: {
     itemCheckTotalGet() {

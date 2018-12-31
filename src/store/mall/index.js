@@ -28,7 +28,7 @@ class MallAction {
     let ret = await Request.post('/api/mall/category', {})
     console.log('mall get mall category ret', ret)
     if (ret.code == 0) {
-      state.mallCategory = ret.data
+      state.mallCategory = ret.data.list
     }
     return ret
   }

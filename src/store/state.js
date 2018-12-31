@@ -92,11 +92,9 @@ export default {
     list: [],
     current: 0
   },
-  swipeAutoBanner: false,
   goodsBanners: {
     list: [],
     current: 0
-  },
-  swipeAutoGoodsBanner: false
+  }
 
 }

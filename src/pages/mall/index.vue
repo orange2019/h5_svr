@@ -213,9 +213,6 @@ export default {
     },
     mallBanners() {
       return this.$store.state.mallBanners;
-    },
-    swipeAutoBanner() {
-      return this.$store.state.swipeAutoBanner;
     }
   },
   data() {
@@ -249,16 +246,20 @@ export default {
       this.$store.state.mallBanners.list
     );
 
-    if (!this.swipeAutoBanner) {
-      let swipeAuto = () => {
-        this.onSwipeRight();
-        setTimeout(() => {
-          swipeAuto();
-        }, 5000);
-      };
-      this.$store.state.swipeAutoBanner = true;
-      swipeAuto();
-    }
+    window.swipeAuto = () => {
+      this.onSwipeRight();
+      setTimeout(() => {
+        if (typeof window.swipeAuto == "function") {
+          window.swipeAuto();
+        }
+      }, 5000);
+    };
+
+    window.swipeAuto();
+  },
+  beforeRouteLeave(to, from, next) {
+    window.swipeAuto = null;
+    next();
   },
   methods: {
     getMore() {
