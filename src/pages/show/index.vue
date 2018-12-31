@@ -6,19 +6,19 @@
     <v-touch @swipeleft="onSwipeLeft" @swiperight="onSwipeRight">
       <div class="p-5 m-3 show-box">
         <div class="show-box-0 bg-secondary" style="height:300px;">
-          <img :src="getVideoCover(videoList[0])" alt width="100%" height="300px">
+          <img :src="getVideoCover(videoList[0])" alt width="100%" height="292px">
         </div>
         <div class="show-box-1 bg-secondary" style="height:260px;">
-          <img :src="getVideoCover(videoList[2])" alt width="100%" height="260px">
+          <img :src="getVideoCover(videoList[1])" alt width="100%" height="252px">
         </div>
         <div class="show-box-2 bg-secondary" style="height:260px;">
-          <img :src="getVideoCover(videoList[3])" alt width="100%" height="260px">
+          <img :src="getVideoCover(videoList[2])" alt width="100%" height="252px">
         </div>
         <div class="show-box-3 bg-secondary" style="height:220px;">
-          <img :src="getVideoCover(videoList[4])" alt width="100%" height="220px">
+          <img :src="getVideoCover(videoList[3])" alt width="100%" height="212px">
         </div>
         <div class="show-box-4 bg-secondary" style="height:220px;">
-          <img :src="getVideoCover(videoList[5])" alt width="100%" height="220px">
+          <img :src="getVideoCover(videoList[4])" alt width="100%" height="212px">
         </div>
       </div>
     </v-touch>
@@ -28,8 +28,8 @@
         <div class="col-12">
           <div class="border-top border-white mb-4"></div>
         </div>
-        <div class="col-6 text-warning h5">{{videoInfo.title}}</div>
-        <div class="col-6 text-right">
+        <div class="col-6 text-warning h5 text-truncate">{{videoInfo.title}}</div>
+        <div class="col-6 text-right pl-0">
           <small class="text-white">发布时间:{{formatTime(videoInfo.create_time)}}</small>
         </div>
         <div class="col-12 text-white mt-2">{{videoInfo.description}}</div>
@@ -67,7 +67,7 @@ export default {
   methods: {
     getVideoCover(video) {
       if (video) {
-        return video.cover;
+        return video.cover + "@!video_cover";
       } else {
         return "";
       }

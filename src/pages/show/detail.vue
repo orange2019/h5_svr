@@ -10,7 +10,12 @@
 
     <div class>
       <div class="bg-light" id="videoHtml">
-        <video width="100%" controls="controls" :poster="videoInfo.cover" preload="preload">
+        <video
+          width="100%"
+          controls="controls"
+          :poster="videoInfo.cover +  '@!news_cover'"
+          preload="preload"
+        >
           <source :src="videoInfo.url" type="video/mp4">
         </video>
       </div>
@@ -32,34 +37,20 @@
       <div class="col-12">
         <template v-for="(item,i) in videoList" v-if="i != 0">
           <div class="row mt-3" @click="changeVideo(item)">
-            <div class="col-5 pr-0 bg-light">
-              <img src alt width="100%" height="100%">
+            <div class="col-5 pr-0">
+              <img :src="item.cover + '@!news_cover'" alt width="100%">
             </div>
             <div class="col-7">
-              <div class="mt-2">{{ item.title}}</div>
-              <div class="text-muted mt-2">
+              <div class="text-truncate">{{ item.title}}</div>
+              <div class="text-muted text-truncate">
                 <small>{{ item.description }}</small>
               </div>
-              <div class="text-black-50 mt-2 mb-2">
+              <div class="text-black-50 mb-2">
                 <small>{{ formatTime(item.create_time) }}</small>
               </div>
             </div>
           </div>
         </template>
-        <!-- <div class="row mt-3">
-          <div class="col-5 pr-0 bg-light">
-            <img src alt width="100%" height="100%">
-          </div>
-          <div class="col-7">
-            <div class="mt-2">视频名称</div>
-            <div class="text-muted mt-2">
-              <small>秒速</small>
-            </div>
-            <div class="text-black-50 mt-2 mb-2">
-              <small>发布时间</small>
-            </div>
-          </div>
-        </div>-->
       </div>
     </div>
   </div>
@@ -68,6 +59,24 @@
 <script>
 import Moment from "moment";
 export default {
+  asyncData({ store, route }) {
+    if (store.state.video.list.length == 0) {
+      let body = {
+        limit: 0
+      };
+      store.dispatch("videoListGet", { route, body }).then(ret => {
+        store.state.video.info = store.state.video.list[0];
+      });
+    }
+
+    if (store.state.video.list.length == 5) {
+      let body = {
+        offset: 5,
+        limit: 100
+      };
+      store.dispatch("videoListGet", { route, body });
+    }
+  },
   data() {
     return {
       // videoInfo: {
@@ -97,6 +106,7 @@ export default {
       document.getElementById("videoHtml").innerHTML =
         `<video width="100%" controls="controls" poster="` +
         video.cover +
+        "@!news_cover" +
         `" preload="preload">
           <source src="${video.url}" type="video/mp4">
         </video>`;
