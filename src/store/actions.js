@@ -93,10 +93,25 @@ export default {
   }) {
     return await CartAction.getInfo(state)
   },
+  async mallBannersGet({
+    state
+  }) {
+    return await MallAction.getBanners(state)
+  },
+  async mallCategoryGet({
+    state
+  }) {
+    return await MallAction.getCategory(state)
+  },
   async mallGoodsListGet({
     state
   }, data) {
     return await MallAction.getList(state, data.route, data.body)
+  },
+  async mallGoodsInfoGet({
+    state
+  }, data) {
+    return await MallAction.getGoodsInfo(state, data.route)
   },
   async mallOrderListGet({
     state

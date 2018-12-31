@@ -56,14 +56,12 @@ class Cart {
   add(itemInfo, count = 1) {
     let isNew = 1
     this.cart.forEach(item => {
-      console.log('add  ======= item', item)
       if (item.id == itemInfo.id) {
         item.count = count
         isNew = 0
       }
     })
     if (isNew) {
-      console.log('add ===== itemInfo', itemInfo)
       this.cart.push(itemInfo)
     }
   }
@@ -89,6 +87,8 @@ class Cart {
         item.count = item.count - count
         if (item.count > 0) {
           newCart.push(item)
+        } else {
+          this.cart.splice(i, 1)
         }
       }
     })

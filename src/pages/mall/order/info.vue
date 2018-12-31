@@ -88,7 +88,13 @@
       <div class="col-2">备注</div>
       <div class="col-10 text-right">
         <span class="text-muted">
-          <textarea cols="3" class="form-control bg-light" v-if="orderInfo.remark" readonly></textarea>
+          <textarea
+            cols="3"
+            class="form-control bg-light"
+            v-if="orderInfo.remark"
+            readonly
+            v-model="orderInfo.remark"
+          ></textarea>
           <textarea cols="3" class="form-control bg-light" v-model="postData.remark" v-else></textarea>
         </span>
       </div>
@@ -247,7 +253,7 @@ export default {
           this.$router.push({
             path: "/mall/order",
             query: {
-              token: token,
+              token: this.token,
               status: 2
             }
           });

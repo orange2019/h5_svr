@@ -69,10 +69,12 @@ export default {
     itemCheckVal: {},
     itemCheckTotal: 0,
   },
+  mallCategory: [],
   goods: {
     list: [],
     offset: 0,
-    limit: 10
+    limit: 1,
+    info: {}
   },
   order: {
     list: [],
@@ -85,6 +87,16 @@ export default {
     default: {},
     modify: {},
     modifyIndex: 0
-  }
+  },
+  mallBanners: {
+    list: [],
+    current: 0
+  },
+  swipeAutoBanner: false,
+  goodsBanners: {
+    list: [],
+    current: 0
+  },
+  swipeAutoGoodsBanner: false
 
 }

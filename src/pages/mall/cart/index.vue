@@ -79,11 +79,7 @@
           <span class="text-danger">{{itemCheckTotal}}</span>
         </div>
         <div class="col-3 text-right">
-          <a
-            href="javascript:;"
-            class="btn btn-primary btn-sm btn-block"
-            @click="orderCreateStart"
-          >结算</a>
+          <a href="javascript:;" class="btn btn-primary btn-sm btn-block" @click="cartConfirm">结算</a>
         </div>
       </div>
     </div>
@@ -299,7 +295,7 @@ export default {
       //   );
       //   return;
       // }
-
+      console.log(item);
       if (item.stock != -1 && item.count + 1 > item.stock) {
         this.errMsgAlert(
           `<span class="bg-dark text-white p-2">库存不足</span>`
@@ -396,6 +392,25 @@ export default {
       setTimeout(() => {
         this.errMsg = "";
       }, 3000);
+    },
+    cartConfirm() {
+      if (!this.mallUser.auth) {
+        window.android.goToLogin();
+      }
+
+      let items = this.itemCheckItemGet();
+      if (items.length <= 0) {
+        this.errMsgAlert(
+          `<span class="bg-dark text-white p-2">请选择结算物品</span>`
+        );
+        this.orderCreateSubmit(0);
+        return;
+      }
+
+      this.$router.push({
+        path: "/mall/cart/confirm",
+        query: { token: this.$route.query.token }
+      });
     }
   }
 };

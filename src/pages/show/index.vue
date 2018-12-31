@@ -40,6 +40,8 @@
 
 <script>
 import Moment from "moment";
+import ArrUtils from "./../../utils/arr.js";
+
 export default {
   asyncData({ store, route }) {
     if (store.state.video.list.length == 0) {
@@ -77,14 +79,15 @@ export default {
     onSwipeLeft() {
       console.log("onSwipeLeft ...");
       let list = this.videoList;
-      let newList = [];
-      for (let index = 0; index < list.length; index++) {
-        if (index == list.length - 1) {
-          newList[index] = list[0];
-        } else {
-          newList[index] = list[index + 1];
-        }
-      }
+      // let newList = [];
+      // for (let index = 0; index < list.length; index++) {
+      //   if (index == list.length - 1) {
+      //     newList[index] = list[0];
+      //   } else {
+      //     newList[index] = list[index + 1];
+      //   }
+      // }
+      let newList = ArrUtils.moveLeft(list);
 
       console.log("onSwipeRight onSwipeLeft", newList);
       this.$store.state.video.list = newList;
@@ -93,14 +96,15 @@ export default {
       console.log("onSwipeRight ...");
 
       let list = this.videoList;
-      let newList = [];
-      for (let index = 0; index < list.length; index++) {
-        if (index == 0) {
-          newList[index] = list[list.length - 1];
-        } else {
-          newList[index] = list[index - 1];
-        }
-      }
+      // let newList = [];
+      // for (let index = 0; index < list.length; index++) {
+      //   if (index == 0) {
+      //     newList[index] = list[list.length - 1];
+      //   } else {
+      //     newList[index] = list[index - 1];
+      //   }
+      // }
+      let newList = ArrUtils.moveRight(list);
 
       console.log("onSwipeRight onSwipeRight", newList);
       this.$store.state.video.list = newList;

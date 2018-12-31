@@ -24,15 +24,39 @@ class MallAction {
     return ret
   }
 
+  async getCategory(state) {
+    let ret = await Request.post('/api/mall/category', {})
+    console.log('mall get mall category ret', ret)
+    if (ret.code == 0) {
+      state.mallCategory = ret.data
+    }
+    return ret
+  }
+
+  async getBanners(state) {
+    let ret = await Request.post('/api/mall/goods/banners', {
+      status: 1
+    })
+    console.log('mall get mall banners ret', ret)
+    if (ret.code == 0) {
+      state.mallBanners.list = ret.data.rows
+    }
+    return ret
+  }
+
   async getList(state, route, data) {
 
     let offset = state.goods.offset || 0
     let limit = state.goods.limit || 10
 
-    let ret = await Request.post('/api/mall/goods/list', {
-      offset: offset,
-      limit: limit
-    })
+    let query = {}
+    query.status = 1
+    query.offset = offset
+    query.limit = limit
+    if (route.query.c_id) {
+      query.c_id = route.query.c_id
+    }
+    let ret = await Request.post('/api/mall/goods/list', query)
 
     console.log('request mall get list', ret)
     if (ret.code == 0) {
@@ -43,6 +67,21 @@ class MallAction {
       state.goods.offset += limit
     }
 
+    return ret
+
+  }
+
+  async getGoodsInfo(state, route) {
+
+    let ret = await Request.post('/api/mall/goods/info', {
+      id: route.query.id
+    })
+    console.log('request goods info', ret)
+    if (ret.code == 0) {
+      state.goods.info = ret.data.goodInfo
+    }
+
+    return ret
   }
 
   async getOrderList(state, route, data = {}) {

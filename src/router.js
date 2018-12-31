@@ -34,6 +34,7 @@ import ShowInfo from './pages/show/detail.vue'
 import Mall from './pages/mall/index.vue'
 import MallGoods from './pages/mall/goods/index.vue'
 import MallCart from './pages/mall/cart/index.vue'
+import MallCartConfirm from './pages/mall/cart/confirm.vue'
 import MallOrder from './pages/mall/order/index.vue'
 import MallOrderInfo from './pages/mall/order/info.vue'
 import UserCenter from './pages/user/index.vue'
@@ -168,6 +169,10 @@ let routes = [{
   {
     path: '/mall/cart',
     component: MallCart
+  },
+  {
+    path: '/mall/cart/confirm',
+    component: MallCartConfirm
   },
   {
     path: '/mall/order',
