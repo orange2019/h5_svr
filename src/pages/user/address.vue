@@ -93,7 +93,7 @@ export default {
         city: ""
       };
 
-      store.state.address.modifyIndex = store.state.address.list.length;
+      this.$store.state.address.modifyIndex = this.$store.state.address.list.length;
       this.$router.push({
         path: "/user/address/update",
         query: {
