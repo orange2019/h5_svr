@@ -9316,8 +9316,8 @@ body {
 }
 .show-info {
   position: absolute;
-  bottom: 5%;
   width: 100%;
+  bottom: 70px;
 }
 .top-search input {
   border-radius: 1rem;
@@ -9366,4 +9366,4 @@ body {
   color: #6c757d;
 }
 
-/*# sourceMappingURL=app.41aada9afcfbc9176082.css.map*/
+/*# sourceMappingURL=app.fa3878c0e05786e9d9d2.css.map*/
