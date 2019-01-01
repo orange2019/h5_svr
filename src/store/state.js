@@ -73,7 +73,7 @@ export default {
   goods: {
     list: [],
     offset: 0,
-    limit: 1,
+    limit: 10,
     info: {}
   },
   order: {
