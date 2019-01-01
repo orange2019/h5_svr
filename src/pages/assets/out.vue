@@ -6,11 +6,7 @@
           <span class="fas fa-chevron-left text-white"></span>
         </a>
       </div>
-<<<<<<< HEAD
-      <div class="col-8 text-center">提取通证</div>
-=======
       <div class="col-8 text-center">提币申请</div>
->>>>>>> dev
     </div>
 
     <div class="mt-5">
