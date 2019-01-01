@@ -52,6 +52,7 @@ export default {
   },
   asyncData({ store, route }) {
     route.query.category = route.query.category || "NOTICE";
+    route.query.type = route.query.type || 1;
     store.dispatch("newsListGet", {
       route: route
     });
@@ -88,7 +89,11 @@ export default {
       return Moment(date).format(format);
     },
     changeCategory(category) {
-      this.$router.push({ path: "/news", query: { category: category } });
+      let type = this.$route.query.type || 1;
+      this.$router.push({
+        path: "/news",
+        query: { category: category, type: type }
+      });
 
       let route = this.$route;
       route.query.category = category;

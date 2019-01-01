@@ -21,6 +21,7 @@ const Log = require('./log');
 const bodyParser = require('body-parser'); // 处理请求中body的内容
 const methodOverride = require('method-override');
 
+<<<<<<< HEAD
 // const session = require("express-session"); // session中间件
 // const RedisStrore = require("connect-redis")(session);
 
@@ -43,6 +44,28 @@ const methodOverride = require('method-override');
 //     store: new RedisStrore(sessionStore)
 //   })
 // );
+=======
+const session = require('express-session'); // session中间件
+// const RedisStrore = require('connect-redis')(session);
+// const sessionStore = {
+//   host: process.env.NODE_ENV == "production" ? "127.0.0.1" : "47.52.193.103",
+//   port: 6379
+// };
+// session 支持
+app.use(
+  session({
+    // name: 'connect.sid',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+      maxAge: 1000 * 60 * 60 * 24 * 7
+    },
+    secret: "123456", // session加密
+    // store: new RedisStrore(sessionStore)
+  })
+);
+>>>>>>> dev
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -75,13 +98,22 @@ const request = require('superagent');
 const uuid = require('uuid');
 const crypt = require('./crypt');
 
+app.use('/cart', require('./middleware/cart'))
+
 app.use('/api', async (req, res) => {
   let url = req.originalUrl;
   let apiLog = Log('api');
 
   // let apiUrl = (process.env.NODE_ENV == 'production') ? 'http://ec2-18-188-112-81.us-east-2.compute.amazonaws.com:4001' : '127.0.0.1:4001'
   let apiUrl = 'http://127.0.0.1:4001'
-  url = url.replace('/api', apiUrl + '/h5');
+  if (process.env.NODE_ENV == 'test') {
+    apiUrl = "127.0.0.1:5001";
+  }
+  if (url.indexOf('/api/mall') > -1) {
+    url = url.replace('/api/mall', apiUrl + '/mall');
+  } else {
+    url = url.replace('/api', apiUrl + '/h5');
+  }
 
   const reqUuid = uuid.v4();
   // let data = JSON.stringify({
@@ -220,7 +252,10 @@ if (nodeEnv == 'dev') {
   }
 }
 
-const PROT = process.env.port || 4003;
+let PROT = process.env.port || 4003;
+if (process.env.NODE_ENV == 'test') {
+  PROT = 5003
+}
 
 app.listen(PROT, function () {
   console.log(`Vue express ssr server: app listening on port ${PROT}!\n`);

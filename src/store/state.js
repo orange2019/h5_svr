@@ -31,6 +31,7 @@ export default {
   investDetailTotal: 0,
   investDetailTotalLeave: 0,
   userAssets: {},
+  userAssetsOutLogs: [],
   userTransactions: [],
   userTransactionsCount: 0,
   userTransactionsOffset: 0,
@@ -55,5 +56,44 @@ export default {
     limit: 0,
     count: 0,
     info: {}
+  },
+  mallUser: {
+    auth: false,
+    info: {}
+  },
+  cart: {
+
+  },
+  cartCheck: {
+    itemCheck: [],
+    itemCheckVal: {},
+    itemCheckTotal: 0,
+  },
+  mallCategory: [],
+  goods: {
+    list: [],
+    offset: 0,
+    limit: 10,
+    info: {}
+  },
+  order: {
+    list: [],
+    offset: 0,
+    limit: 10,
+    info: {}
+  },
+  address: {
+    list: [],
+    default: {},
+    modify: {},
+    modifyIndex: 0
+  },
+  mallBanners: {
+    list: [],
+    current: 0
+  },
+  goodsBanners: {
+    list: [],
+    current: 0
   }
 };

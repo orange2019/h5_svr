@@ -6,16 +6,12 @@
           <span class="fas fa-chevron-left text-white"></span>
         </a>
       </div>
-<<<<<<< HEAD
-      <div class="col-8 text-center">提取通证</div>
-=======
-      <div class="col-8 text-center">提币申请</div>
->>>>>>> dev
+      <div class="col-8 text-center">积分兑换</div>
     </div>
 
     <div class="mt-5">
       <div class="text-center">
-        <small class="text-muted">最大可提取余额</small>
+        <small class="text-muted">最大可兑换余额</small>
         <div class="h3">{{ userAssets.token_balance}}</div>
       </div>
       <div class="mt-5">
@@ -26,30 +22,9 @@
               type="text"
               class="form-control text-right border-top-0 border-left-0 border-right-0"
               v-model="postData.num"
-              placeholder="请输入提取通证数量"
+              placeholder="请输入兑换数量"
             >
           </div>
-        </div>
-
-        <div class="form-group row mt-3">
-          <label for class="col-3 col-form-label">提取通证至</label>
-          <div class="col-9">
-            <input
-              type="text"
-              class="form-control text-right border-top-0 border-left-0 border-right-0"
-              placeholder="请输入交易所提供的提取通证地址"
-              required
-              v-model="postData.to_address"
-            >
-          </div>
-        </div>
-
-        <div class="mt-3 p-3 text-center">
-          <a
-            href="javascript:;"
-            @click="scanQrCode"
-            class="btn btn-lg btn-outline-primary btn-radius-big btn-block"
-          >点击扫描二维码</a>
         </div>
 
         <div class="row mt-3">
@@ -64,10 +39,6 @@
 
           <div class="col-12 mt-3 text-center">
             <small class="text-danger">{{ errMsg }}</small>
-          </div>
-
-          <div class="col-12 mt-3 text-center">
-            <router-link :to="{path:'/assets/outLogs' , query: {token: token}}">提币申请记录</router-link>
           </div>
         </div>
       </div>
@@ -101,7 +72,6 @@ export default {
       errMsg: "",
       postData: {
         num: "",
-        to_address: "",
         type: 2
       }
     };
@@ -115,45 +85,11 @@ export default {
     }
   },
   methods: {
-    scanQrCode() {
-      if (window.android) {
-        window.android.scanQrCode();
-      }
-
-      let getResult = () => {
-        console.log("get result ....");
-        setTimeout(() => {
-          let qrCodeCameraVisible = window.android.qrCodeCameraVisible();
-          // let qrCodeCameraVisible = false;
-          if (qrCodeCameraVisible) {
-            let result = window.android.getResult();
-
-            if (result && result != "close") {
-              this.postData.to_address = result;
-            } else if (result == "") {
-              getResult();
-            } else {
-              return;
-            }
-          } else {
-            getResult();
-          }
-        }, 1000);
-      };
-
-      getResult();
-    },
     setTradePwdBoxShow() {
       let num = this.postData.num;
-      let address = this.postData.to_address;
-      if (!address) {
-        this.errMsg = "请选择转账地址";
-        return;
-      }
+
       if (num > this.userAssets.token_balance || isNaN(num) || num <= 0) {
-        this.errMsg = "请输入正确的转账通证数量";
-      } else if (!address) {
-        this.errMsg = "请输入正确的转账地址";
+        this.errMsg = "请输入正确的转账金额";
       } else {
         this.errMsg = "";
         this.setTradePwbIsOpen = 1;
@@ -169,17 +105,16 @@ export default {
 
       let postData = this.postData;
       postData.password = password;
-      postData.to_address = this.reTransWalletAddress(postData.to_address);
 
       this.setTradePwbMsg = `提交中...`;
 
       let ret = await Request.post(
-        "/api/assetsTransfer?token=" + this.token,
+        "/api/assetsToScore?token=" + this.token,
         postData
       );
-      console.log("request assetsTransfer ret", ret);
+      console.log("request assetsToScore ret", ret);
       if (ret.code == 0) {
-        this.setTradePwbMsg = `转账成功`;
+        this.setTradePwbMsg = `兑换成功`;
 
         setTimeout(() => {
           this.setTradePwbIsOpen = 0;
@@ -191,16 +126,6 @@ export default {
       } else {
         this.setTradePwbMsg = `<span class="text-danger">${ret.message}</span>`;
       }
-    },
-    reTransWalletAddress(address) {
-      let newAddress = address
-        .split("")
-        .reverse()
-        .join("");
-      console.log("newAddress", newAddress);
-      newAddress = "0x" + newAddress.toLowerCase();
-      console.log("newAddress", newAddress);
-      return newAddress;
     }
   }
 };

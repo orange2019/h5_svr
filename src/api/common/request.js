@@ -26,8 +26,8 @@ class Request {
     // console.log(res)
     if (res.status == 200) {
       let ret = res.body
-      console.log(ret)
-      if (ret.code == -100 || ret.code == -101) {
+      // console.log(ret)
+      if (url.indexOf('/api/mall/') < 0 && (ret.code == -100 || ret.code == -101)) {
         // this.dataHref('/auth/err?code=' + ret.code)
         this.jump(ret.code)
         ret.data = {}

@@ -3,6 +3,8 @@ import InvestAction from './invest/index'
 import InviteAction from './invite/index'
 import AssetsAction from './assets/index'
 import VideoAction from './video/index'
+import CartAction from './cart/index'
+import MallAction from "./mall/index"
 
 export default {
   async newsListGet({
@@ -34,6 +36,11 @@ export default {
     state
   }, data) {
     return await AssetsAction.getUserAsset(state, data.route)
+  },
+  async userAssetsOutLogsGet({
+    state
+  }, data) {
+    return await AssetsAction.getUserAssetOutLogs(state, data.route)
   },
   async userTransactionGet({
     state
@@ -70,6 +77,51 @@ export default {
     state
   }, data) {
     return await VideoAction.getList(state, data.route, data.body)
+  },
+  async mallUserGet({
+    state
+  }, data) {
+    return await MallAction.getUser(state, data.route)
+  },
+  async mallUserGetAddress({
+    state
+  }, data) {
+    return await MallAction.getUserAddress(state, data.route)
+  },
+  async cartInfoGet({
+    state
+  }) {
+    return await CartAction.getInfo(state)
+  },
+  async mallBannersGet({
+    state
+  }) {
+    return await MallAction.getBanners(state)
+  },
+  async mallCategoryGet({
+    state
+  }) {
+    return await MallAction.getCategory(state)
+  },
+  async mallGoodsListGet({
+    state
+  }, data) {
+    return await MallAction.getList(state, data.route, data.body)
+  },
+  async mallGoodsInfoGet({
+    state
+  }, data) {
+    return await MallAction.getGoodsInfo(state, data.route)
+  },
+  async mallOrderListGet({
+    state
+  }, data) {
+    return await MallAction.getOrderList(state, data.route, data.body)
+  },
+  async mallOrderInfoGet({
+    state
+  }, data) {
+    return await MallAction.getOrderInfo(state, data.route, data.body)
   }
 
 }
