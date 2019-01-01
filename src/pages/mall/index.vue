@@ -12,7 +12,7 @@
             type="text"
             class="form-control mt-1 text-muted"
             placeholder="请输入搜索关键字"
-            @keydown="searchGoods"
+            @keyup.13="searchGoods"
             v-model="keyword"
           >
           <div class="icon text-muted">
@@ -283,7 +283,7 @@ export default {
         path: "/mall",
         query: {
           token: this.token,
-          keyword: keyword
+          keyword: this.keyword
         }
       });
 
@@ -292,7 +292,7 @@ export default {
       this.$store
         .dispatch("mallGoodsListGet", {
           route: this.$route,
-          body: {}
+          body: { keyword: this.keyword }
         })
         .then(ret => {
           if (ret.data.count > this.$store.state.goods.limit) {

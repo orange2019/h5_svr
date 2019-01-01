@@ -56,6 +56,9 @@ class MallAction {
     if (route.query.c_id) {
       query.c_id = route.query.c_id
     }
+    if (data.keyword) {
+      query.keyword = data.keyword
+    }
     let ret = await Request.post('/api/mall/goods/list', query)
 
     console.log('request mall get list', ret)
