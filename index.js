@@ -21,30 +21,6 @@ const Log = require('./log');
 const bodyParser = require('body-parser'); // 处理请求中body的内容
 const methodOverride = require('method-override');
 
-<<<<<<< HEAD
-// const session = require("express-session"); // session中间件
-// const RedisStrore = require("connect-redis")(session);
-
-// const sessionStore = {
-//   host: process.env.NODE_ENV == "production" ? "127.0.0.1" : "47.52.193.103",
-//   // host: 'ec2-54-169-177-12.ap-southeast-1.compute.amazonaws.com',
-//   port: 6379
-// };
-// // session 支持
-// app.use(
-//   session({
-//     // name: 'connect.sid',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//       secure: false,
-//       maxAge: 1000 * 60 * 60 * 24 * 7
-//     },
-//     secret: "123456", // session加密
-//     store: new RedisStrore(sessionStore)
-//   })
-// );
-=======
 const session = require('express-session'); // session中间件
 // const RedisStrore = require('connect-redis')(session);
 // const sessionStore = {
@@ -65,7 +41,6 @@ app.use(
     // store: new RedisStrore(sessionStore)
   })
 );
->>>>>>> dev
 
 app.use(bodyParser.urlencoded({
   extended: true
