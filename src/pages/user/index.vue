@@ -134,7 +134,7 @@ export default {
       this.$router.push({ path: path, query: { token: this.token } });
     },
     goToLogout() {
-      window.android.goToLogout();
+      window.android.logout();
     }
   }
 };
