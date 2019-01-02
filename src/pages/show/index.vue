@@ -95,7 +95,6 @@ export default {
       console.log("onSwipeRight ...");
       document.getElementById('show-box-0').style.animation = 'swipeRight 0.5s'
       
-      
       setTimeout(() => {
         let list = this.videoList;
         let newList = ArrUtils.moveRight(list);
