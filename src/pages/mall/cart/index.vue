@@ -64,9 +64,9 @@
 
     <div class="p-5"></div>
 
-    <div class="position-fixed fixed-bottom w-100 bg-white pt-3 pb-3">
-      <div class="row">
-        <div class="col-3" @click="checkItemAll">
+    <div class="position-fixed fixed-bottom w-100 bg-white ">
+      <div class="row ">
+        <div class="col-3 pt-3 pb-3" @click="checkItemAll">
           <i
             class="far fa-check-square"
             v-if="cart.list && cart.list.length > 0 && itemCheck.length == cart.list.length"
@@ -74,12 +74,14 @@
           <i class="far fa-square" v-else></i>
           <small class="text-muted">全选</small>
         </div>
-        <div class="col-6">
+        <div class="col-6 pt-3 pb-3">
           <span>合计</span>
           <span class="text-danger">{{itemCheckTotal}}</span>
+          <small> /运费</small>
+          <small>{{ itemCheckTotalLogistics }}</small>
         </div>
-        <div class="col-3 text-right">
-          <a href="javascript:;" class="btn btn-primary btn-sm btn-block" @click="cartConfirm">结算</a>
+        <div class="col-3 text-right bg-primary pt-3 pb-3 text-center" @click="cartConfirm">
+          <a href="javascript:;" class="text-white" >结算</a>
         </div>
       </div>
     </div>
@@ -167,7 +169,10 @@ export default {
     },
     itemCheckTotal() {
       return this.$store.state.cartCheck.itemCheckTotal;
-    }
+    },
+    itemCheckTotalLogistics() {
+      return this.$store.state.cartCheck.itemCheckTotalLogistics;
+    },
   },
   data() {
     return {
@@ -247,12 +252,15 @@ export default {
     },
     itemCheckTotalGet() {
       let total = 0;
+      let totalLogistics = 0
       this.cart.list.forEach(item => {
         if (this.$store.state.cartCheck.itemCheck.indexOf(item.id) > -1) {
           total += parseInt(item.price * 100 * item.count);
+          totalLogistics += parseInt(item.price_logistics * 100 * item.count)
         }
       });
       this.$store.state.cartCheck.itemCheckTotal = total / 100;
+      this.$store.state.cartCheck.itemCheckTotalLogistics = totalLogistics / 100;
     },
     itemCheckItemGet() {
       let items = [];

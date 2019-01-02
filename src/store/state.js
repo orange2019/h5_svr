@@ -68,6 +68,7 @@ export default {
     itemCheck: [],
     itemCheckVal: {},
     itemCheckTotal: 0,
+    itemCheckTotalLogistics:0
   },
   mallCategory: [],
   goods: {

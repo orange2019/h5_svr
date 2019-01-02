@@ -2,9 +2,9 @@
   <div class="page">
     <div class="page-top row bg-primary">
       <div class="col-1 pl-0 pr-0 text-right">
-        <a href="javascript:;" @click="categoryShow">
+        <!-- <a href="javascript:;" @click="categoryShow">
           <i class="fas fa-list-ul text-white pl-3"></i>
-        </a>
+        </a> -->
       </div>
       <div class="col-10">
         <div class="top-search">
@@ -58,7 +58,7 @@
     </div>
 
     <v-touch @swipeleft="onSwipeLeft" @swiperight="onSwipeRight">
-      <div class="banner bg-light">
+      <div class="banner bg-light" style="margin-top:50px;">
         <div v-if="mallBanners.list.length > 0">
           <img :src="mallBanners.list[0].photo" alt width="100%" height="200">
         </div>
@@ -231,7 +231,7 @@ export default {
       cartItemStock: 0,
       categoryStyle: {
         top: "50px",
-        display: "none"
+        display: "block"
       },
       categoryMoreStyle: {
         display: "none"
@@ -365,6 +365,7 @@ export default {
       this.cartItem.name = item.name;
       this.cartItem.cover = item.cover;
       this.cartItem.price = item.price;
+      this.cartItem.price_logistics = item.price_logistics
       this.cartItem.stock = item.stock;
       this.cartItemStock = item.stock;
 

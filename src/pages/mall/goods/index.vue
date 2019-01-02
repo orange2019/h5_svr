@@ -35,7 +35,10 @@
             <div class="text-muted">
               <small>{{ goodsInfo.description }}</small>
             </div>
-            <div class="text-danger mt-2">{{ goodsInfo.price}}</div>
+            <div class="text-danger mt-2">
+              {{ goodsInfo.price}}
+              <small class="text-muted">运费:{{ goodsInfo.price_logistics || 0 }}</small>
+            </div>
           </div>
         </div>
       </div>
@@ -297,6 +300,7 @@ export default {
       this.cartItem.name = item.name;
       this.cartItem.cover = item.cover;
       this.cartItem.price = item.price;
+      this.cartItem.price_logistics = item.price_logistics
       this.cartItem.stock = item.stock;
       this.cartItemStock = item.stock;
 
@@ -362,6 +366,7 @@ export default {
               path: "/mall/cart?token=" + this.$route.query.token
             });
           } else {
+            await this.$store.dispatch('cartInfoGet')
             this.cart.list.forEach(item => {
               if (this.$store.state.cartCheck.itemCheck.indexOf(item.id) < -0) {
                 this.$store.state.cartCheck.itemCheck.push(item.id);
