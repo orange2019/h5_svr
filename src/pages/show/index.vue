@@ -80,7 +80,6 @@ export default {
       console.log("onSwipeLeft ...");
       document.getElementById('show-box-0').style.animation = 'swipeLeft 0.5s'
       
-
       setTimeout(() => {
         document.getElementById('show-box-0').style.animation = 'none'
 
