@@ -73,8 +73,12 @@
           <div class="col-6 text-right">600.00</div>
       </div>-->
       <div class="row pt-3 pb-3">
+        <div class="col-6">运费</div>
+        <div class="col-6 text-right text-danger">{{ orderInfo.amount_logistics }}</div>
+      </div>
+      <div class="row pt-3 pb-3">
         <div class="col-6">总计</div>
-        <div class="col-6 text-right text-danger">{{ orderInfo.amount }}</div>
+        <div class="col-6 text-right text-danger">{{ orderInfo.amount + orderInfo.amount_logistics }}</div>
       </div>
     </div>
 
@@ -226,7 +230,7 @@ export default {
     orderPay() {
       this.orderPaySubmit.isOpen = 1;
       this.orderPaySubmit.msg =
-        `<div class="text-danger h4">` + this.orderInfo.amount + `</div>`;
+        `<div class="text-danger h4">` + (this.orderInfo.amount + this.orderInfo.amount_logistics) +  `</div>`;
     },
     orderPaySubmitClose() {
       this.orderPaySubmit.isOpen = 0;

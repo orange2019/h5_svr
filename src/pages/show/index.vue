@@ -5,7 +5,7 @@
     </div>
     <v-touch @swipeleft="onSwipeLeft" @swiperight="onSwipeRight">
       <div class="p-5 m-3 show-box">
-        <div class="show-box-0 bg-secondary" style="height:300px;">
+        <div class="show-box-0 bg-secondary" style="height:300px;" id="show-box-0">
           <img :src="getVideoCover(videoList[0])" alt width="100%" height="292px">
         </div>
         <div class="show-box-1 bg-secondary" style="height:260px;">
@@ -78,36 +78,31 @@ export default {
     },
     onSwipeLeft() {
       console.log("onSwipeLeft ...");
-      let list = this.videoList;
-      // let newList = [];
-      // for (let index = 0; index < list.length; index++) {
-      //   if (index == list.length - 1) {
-      //     newList[index] = list[0];
-      //   } else {
-      //     newList[index] = list[index + 1];
-      //   }
-      // }
-      let newList = ArrUtils.moveLeft(list);
+      document.getElementById('show-box-0').style.animation = 'swipeLeft 0.5s'
+      
+      setTimeout(() => {
+        document.getElementById('show-box-0').style.animation = 'none'
 
-      console.log("onSwipeRight onSwipeLeft", newList);
-      this.$store.state.video.list = newList;
+        let list = this.videoList;
+        let newList = ArrUtils.moveLeft(list);
+
+        console.log("onSwipeRight onSwipeLeft", newList);
+        this.$store.state.video.list = newList;
+      } , 500)
     },
     onSwipeRight() {
       console.log("onSwipeRight ...");
+      document.getElementById('show-box-0').style.animation = 'swipeRight 0.5s'
+      
+      setTimeout(() => {
+        let list = this.videoList;
+        let newList = ArrUtils.moveRight(list);
+        console.log("onSwipeRight onSwipeRight", newList);
+        this.$store.state.video.list = newList;
 
-      let list = this.videoList;
-      // let newList = [];
-      // for (let index = 0; index < list.length; index++) {
-      //   if (index == 0) {
-      //     newList[index] = list[list.length - 1];
-      //   } else {
-      //     newList[index] = list[index - 1];
-      //   }
-      // }
-      let newList = ArrUtils.moveRight(list);
+        document.getElementById('show-box-0').style.animation = 'none'
 
-      console.log("onSwipeRight onSwipeRight", newList);
-      this.$store.state.video.list = newList;
+      } , 500)
     },
     goToDetail() {
       console.log("goToDetail", this.videoList[0]);

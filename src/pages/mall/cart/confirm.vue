@@ -55,8 +55,13 @@
       </template>
 
       <div class="row bg-white pt-3 pb-3 border-top">
+        <div class="col-6">运费</div>
+        <div class="col-6 text-right text-danger">{{ itemCheckTotalLogistics }}</div>
+      </div>
+
+      <div class="row bg-white pt-3 pb-3 border-top">
         <div class="col-6">总计</div>
-        <div class="col-6 text-right">{{ itemCheckTotal }}</div>
+        <div class="col-6 text-right "><strong>{{ itemCheckTotal + itemCheckTotalLogistics }}</strong></div>
       </div>
 
       <div class="row mt-2 bg-white pt-3 pb-3">
@@ -118,7 +123,10 @@ export default {
     },
     itemCheckTotal() {
       return this.$store.state.cartCheck.itemCheckTotal;
-    }
+    },
+    itemCheckTotalLogistics() {
+      return this.$store.state.cartCheck.itemCheckTotalLogistics;
+    },
   },
   data() {
     return {

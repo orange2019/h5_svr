@@ -2,7 +2,7 @@
   <div class="page">
     <div class="page-top page-new-list-top row bg-primary">
       <div class="col-2 pl-0">
-        <a href="javascript:window.android.close();" class="pl-3 d-block">
+        <a href="javascript:history.go(-1);" class="pl-3 d-block">
           <span class="fas fa-chevron-left text-white"></span>
         </a>
       </div>
@@ -75,9 +75,6 @@ export default {
   computed: {
     token() {
       return this.$route.query.token;
-    },
-    isAndroid() {
-      return window.hasOwnProperty("android") ? true : false;
     }
   },
   methods: {
@@ -122,7 +119,7 @@ export default {
       if (ret.code == 0) {
         this.errMsg = "修改成功";
         if (window.android) {
-          window.android.goToLogin();
+          history.go(-1);
         }
       } else {
         this.errMsg = "修改失败";

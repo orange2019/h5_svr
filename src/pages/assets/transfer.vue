@@ -86,6 +86,8 @@
             <small class="text-danger">{{ errMsg }}</small>
           </div>
         </div>
+
+        <div class="p-5"></div>
       </div>
     </div>
 
@@ -181,14 +183,16 @@ export default {
 
       let postData = this.postData;
       postData.password = password;
-      postData.to_address = this.reTransWalletAddress(postData.to_address);
+      let toAddress = this.reTransWalletAddress(postData.to_address);
 
       this.setTradePwbMsg = `提交中...`;
 
-      let ret = await Request.post(
-        "/api/assetsTransfer?token=" + this.token,
-        postData
-      );
+      let ret = await Request.post("/api/assetsTransfer?token=" + this.token, {
+        num: postData.num,
+        password: postData.password,
+        to_address: toAddress,
+        type: 3
+      });
       console.log("request assetsTransfer ret", ret);
       if (ret.code == 0) {
         this.setTradePwbMsg = `转账成功`;

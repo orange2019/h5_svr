@@ -25,7 +25,7 @@
             <div class="h5">{{ mallUser.info.realname || '未设置' }}</div>
             <div class="mt-2">
               <router-link
-                :to="{path: '/resetMobile' , query: {token: token}}"
+                :to="{path: '/resetMobileA' , query: {token: token}}"
               >{{ mallUser.info.mobile }}</router-link>
             </div>
             <div class="mt-1 text-muted">积分余额: {{ mallUser.info.score }}</div>
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="bg-white p-3 mt-3" @click="goTo('/resetPwd')">
+      <div class="bg-white p-3 mt-3" @click="goTo('/resetPwdA')">
         <div class="row">
           <div class="col-3">
             <span class="assets-icon tradepwd"></span>

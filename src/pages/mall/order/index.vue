@@ -73,7 +73,8 @@
         <span>共 {{getOrderNo(item.goods_items)}} 件商品,</span>
         <span>
           合计:
-          <span class="text-danger">{{ item.amount }}</span>
+          <span class="text-danger">{{ item.amount + item.amount_logistics }}</span>
+          <small class="text-muted"> /运费:{{ item.amount_logistics }}</small>
         </span>
       </div>
       <div class="row pb-3">
