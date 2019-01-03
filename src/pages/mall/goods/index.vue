@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <v-touch @swipeleft="onSwipeLeft" @swiperight="onSwipeRight">
+    <!-- <v-touch @swipeleft="onSwipeLeft" @swiperight="onSwipeRight">
       <div class v-if="goodsBanners.list.length > 0">
         <div class="goods-info-imgs bg-light">
           <img :src="goodsBanners.list[0]" alt width="100%" height="248" class="d-block">
@@ -25,7 +25,10 @@
           </div>
         </div>
       </div>
-    </v-touch>
+    </v-touch>-->
+    <div class="bg-light">
+      <img :src="goodsInfo.cover" alt width="100%">
+    </div>
 
     <div class="bg-light">
       <div class="mt-2">
@@ -70,13 +73,13 @@
       <div class="mt-2">
         <div class="bg-white">
           <div class="row">
-            <div class="col-4 text-center" @click="goodsInfoClickTab(0)">
+            <div class="col-6 text-center" @click="goodsInfoClickTab(0)">
               <span class="pt-2 pb-2 d-inline-block goods-info-tab-btn" :class="infoTabBtn[0]">产品详情</span>
             </div>
-            <div class="col-4 text-center" @click="goodsInfoClickTab(1)">
+            <!-- <div class="col-4 text-center" @click="goodsInfoClickTab(1)">
               <span class="pt-2 pb-2 d-inline-block goods-info-tab-btn" :class="infoTabBtn[1]">规格参数</span>
-            </div>
-            <div class="col-4 text-center" @click="goodsInfoClickTab(2)">
+            </div>-->
+            <div class="col-6 text-center" @click="goodsInfoClickTab(2)">
               <span class="pt-2 pb-2 d-inline-block goods-info-tab-btn" :class="infoTabBtn[2]">售后保障</span>
             </div>
           </div>
@@ -85,7 +88,7 @@
 
           <div :class="infoTab[1]" class="p-3"></div>
 
-          <div :class="infoTab[2]" class="p-3"></div>
+          <div :class="infoTab[2]" class="p-3">售后保障，内容待提供</div>
         </div>
       </div>
     </div>
@@ -232,20 +235,19 @@ export default {
     }
   },
   beforeRouteLeave(to, from, next) {
-    window.swipeAuto1 = null;
-    next();
+    // window.swipeAuto1 = null;
+    // next();
   },
   created() {
-    window.swipeAuto1 = () => {
-      this.onSwipeRight();
-      setTimeout(() => {
-        if (typeof window.swipeAuto1 == "function") {
-          window.swipeAuto1();
-        }
-      }, 5000);
-    };
-
-    window.swipeAuto1();
+    // window.swipeAuto1 = () => {
+    //   this.onSwipeRight();
+    //   setTimeout(() => {
+    //     if (typeof window.swipeAuto1 == "function") {
+    //       window.swipeAuto1();
+    //     }
+    //   }, 5000);
+    // };
+    // window.swipeAuto1();
   },
   methods: {
     itemCheckTotalGet() {

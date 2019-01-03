@@ -1,8 +1,8 @@
 {
   "publicPath": "/",
   "all": [
-    "css/app.1d426071072889c3c012.css",
-    "css/app.1d426071072889c3c012.css.map",
+    "css/app.38de42918dbe5d3ee26f.css",
+    "css/app.38de42918dbe5d3ee26f.css.map",
     "images/address.png",
     "images/alert-box-close.png",
     "images/alert-box-fail.png",
@@ -21,11 +21,11 @@
     "images/order.png",
     "images/pwd.png",
     "index.html",
-    "js/app.1d426071072889c3c012.js",
-    "js/app.1d426071072889c3c012.js.map"
+    "js/app.38de42918dbe5d3ee26f.js",
+    "js/app.38de42918dbe5d3ee26f.js.map"
   ],
   "initial": [
-    "js/app.1d426071072889c3c012.js"
+    "js/app.38de42918dbe5d3ee26f.js"
   ],
   "async": [],
   "modules": {
@@ -3032,7 +3032,7 @@
       5,
       4
     ],
-    "2d84fb1a": [
+    "14c8dd32": [
       20,
       0,
       0,
