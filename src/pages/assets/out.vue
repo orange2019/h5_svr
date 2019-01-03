@@ -164,15 +164,18 @@ export default {
       let password = new MD5().update(val).digest("hex");
 
       let postData = this.postData;
+      let address = postData.to_address;
       postData.password = password;
-      postData.to_address = this.reTransWalletAddress(postData.to_address);
+      let toAddress = this.reTransWalletAddress(address);
 
       this.setTradePwbMsg = `提交中...`;
 
-      let ret = await Request.post(
-        "/api/assetsTransfer?token=" + this.token,
-        postData
-      );
+      let ret = await Request.post("/api/assetsTransfer?token=" + this.token, {
+        num: postData.num,
+        password: postData.password,
+        to_address: toAddress,
+        type: 2
+      });
       console.log("request assetsTransfer ret", ret);
       if (ret.code == 0) {
         this.setTradePwbMsg = `转账成功`;
